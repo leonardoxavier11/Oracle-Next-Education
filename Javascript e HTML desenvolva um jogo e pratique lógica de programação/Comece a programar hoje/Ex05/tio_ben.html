@@ -1,0 +1,33 @@
+<!-- O debugger (depurador de código) é seu amigo
+
+Toda linguagem de programação possui ferramentas que nos auxiliam a descobrir o que há de errado com o código,
+principalmente no que diz respeito aos erros de sintaxe, que são aqueles tipos de erros que ocorrem quando deixamos de
+seguir regras que a linguagem de programação utiliza.
+
+Vejamos o seguinte código escrito por Tio Ben: -->
+
+<meta charset="UTF-8">
+<script>
+    alert("Isso");
+    alert("é");
+    alert("um");
+    alert("programa);
+    alert("sim");
+</script>
+
+// Apesar de Tio Ben jurar que verificou o código mil vezes, nada de errado é encontrado.No entanto, ao rodar o programa,
+// Tio Ben identifica o seguinte erro:
+
+// tio_ben.html:6 Uncaught SyntaxError: Invalid or unexpected token
+
+// Ao analisar o trecho acima, você consegue identificar o que aconteceu no código do Tio Ben?
+
+// Resposta
+// O erro no console aponta o problema na linha 6, o alert("programa); do código do tio Ben. Tio Ben esqueceu de fechar as
+// aspas do texto e toda a informação em texto na linguagem JavaScript deve vir entre aspas
+
+
+// Tio Ben esqueceu de fechar as aspas do texto e todo texto em JavaScript deve vir entre aspas. Ele poderia ter descoberto
+// rapidamente a linha do erro se tivesse utilizado o depurador (debugger) do navegador e verificado na aba "console" se
+// havia alguma mensagem de erro (mensagens de erro são assinaladas na cor vermelha). Se tivesse recorrido a esse recurso
+// teria encontrado o erro mais cedo.
