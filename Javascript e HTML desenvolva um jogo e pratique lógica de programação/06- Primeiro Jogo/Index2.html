@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Consolidando seu conhecimento 1</title>
+</head>
+
+<!-- DESAFIOS
+1 - Você pode criar uma função "sorteia" que recebe um número "n" e sorteia um número entre 0 a n, retornando esse valor. Dessa forma, em vez de escrever var numeroPensado = Math.round(Math.random() * n);, você escreveria var numeroPensado = sorteia(n);. Faça essa modificação, criando a nova função e utilize-a.
+
+2 - Faça com que seu jogo mostre, quando o usuário errar a tentativa, se o número que ele chutou era maior ou menor ao número pensado pelo programa. -->
+
+<body>
+    <script>
+        function pulaLinha() {
+            document.write("<br>");
+            document.write("<br>");
+        }
+        function mostra(frase) {
+            document.write(frase);
+            pulaLinha();
+        }
+
+        function sorteia(n) {
+            let numeroSorteado = Math.round(Math.random() * 10);
+
+            while (numeroSorteado > n) {
+                numeroSorteado = Math.round(Math.random() * 10);
+            }
+
+            if (numeroSorteado === numeroDito) {
+                mostra("Você acertou o número!");
+            } else if (numeroSorteado > numeroDito) {
+                mostra("Você errou o número! O número é: " + numeroSorteado + " e ele é maior do que você falou");
+            } else {
+                mostra("Você errou o número! O número é: " + numeroSorteado + " e ele é menor do que você falou");
+            }
+        }
+
+        let numeroDito = parseFloat(prompt("Informe um número até 10"));
+        let numeroSorteado = sorteia(numeroDito);
+
+
+    </script>
+</body>
+
+</html>
