@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos os números de 20 a 0</title>
+</head>
+
+<body>
+    <script>
+
+        var loginCadastrado = "alura";
+        var senhaCadastrada = "alura321";
+
+        let contador = 0;
+
+        while (contador < 3) {
+            var loginInformado = prompt("Informe seu login");
+            var senhaInformada = prompt("Informe sua senha");
+
+            if (loginCadastrado == loginInformado && senhaCadastrada == senhaInformada) {
+
+                alert("Bem-vindo ao sistema " + loginInformado);
+                contador = 4; //Atualizando a variável para 4, não irá inicar o loop novamente pois o mesmo está condicionado a contador menor que 3.
+                //Ao inves do "contador = 4", poderia ter usado somente o "break"
+            } else {
+
+                alert("Login inválido. Tente novamente");
+                contador++; //Acrescenta +1 a variável contador
+                if (contador >= 3) {
+                    alert("Número máximo de tentativas permitidas");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
