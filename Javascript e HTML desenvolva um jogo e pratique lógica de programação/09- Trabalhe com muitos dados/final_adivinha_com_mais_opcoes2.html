@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Exercício:
+Criar uma lista de segredos que não se repetem -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Adivinha, com Botão</title>
+</head>
+
+<body>
+    <header>
+        <h1>Olá! Tente adivinhar o numero que eu estou pensando!!</h1>
+        <p><strong>Dica!</strong> São 4 numeros e você só precisa acertar 1. <br>Estão entre 1 e 15</p>
+    </header>
+    <form action="">
+        <input type="text" placeholder="Insira o numero aqui">
+        <button>Compare com o meu segredo</button>
+    </form>
+
+    <script>
+        function geraNumeros(quantidade) {
+            //Crio um Array vazio para receber os numeros aleatórios
+            let segredos = [];
+
+            //O 1° for vai ser responsável por gerar o numero aleatório e uma condição "achou = false". Perceba que o incremntador não está aqui, pois será usado apenas em uma condição específica com o objetivo de não "queimar" um dos numeros do Array
+            for (i = 0; i < quantidade;) {
+                let numero = Math.round(Math.random() * 10);
+                let achou = false;
+
+                //O 2° for vai ser responsável por percorrer o Array e verificar se o numero gerado já existe. Existindo, a modifica a variável "achou" para TRUE e para de procurar.
+                for (j = 0; j < segredos.length; j++) {
+                    if (segredos[j] == numero) {
+                        achou = true;
+                        break
+                    }
+                }
+
+                //Após execução do 2° for, voltamos para o primeiro onde vai aplicar as condições. O numero gerado é = à 0? ou a variável "achou" = TRUE? 
+                //Se sim, gera um novo numero. Pq ou o numero é 0 ou já existe no Array
+                //Se não, adiciona o numero no fim do Array e incrementa i++ para que possa dá sequencia ao próximo numero que será adicionado ao Array
+                if (numero == 0 || achou == true) {
+                    numero = Math.round(Math.random() * 10)
+                } else {
+                    segredos.push(numero);
+                    i++;
+                }
+            }
+
+            //A o Array "segredos" que foi criado dentro da função, para a variável "segredos" fora da função (que é Global)
+            return segredos
+        }
+        function verifica() {
+
+            let achou = false;
+
+            for (let i = 0; i < segredos.length; i++) {
+                if (entradaDeDados.value == segredos[i]) {
+                    alert("Você ACERTOU !");
+                    achou = true;
+                    break;
+                }
+            }
+
+            if (achou == false) {
+                alert("Você ERROU !!!");
+            }
+
+            entradaDeDados.value = "";
+            entradaDeDados.focus();
+        }
+        function cliqueNoBotao() {
+            let botao = document.querySelector("button");
+            botao.onclick = verifica;
+        }
+
+        let segredos = geraNumeros(3);
+
+        let entradaDeDados = document.querySelector("input");
+        entradaDeDados.focus();
+
+        cliqueNoBotao();
+        console.log(segredos);
+    </script>
+</body>
+
+</html>

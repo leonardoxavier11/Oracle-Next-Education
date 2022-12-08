@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Adivinha, com Botão</title>
+</head>
+
+<body>
+    <h1>Olá! Tente adivinhar o numero que eu estou pensando!!</h1>
+    <p><strong>Dica!</strong> São 4 numeros e você só precisa acertar 1. <br>Estão entre 1 e 15</p>
+
+    <!-- Foi colocado o "form", pq assim é possível utilizar o "enter" do teclado para acionar o botão -->
+    <form action="">
+        <input type="text" placeholder="Insira o numero aqui">
+        <button>Compare com o meu segredo</button>
+    </form>
+
+    <script>
+        //Array
+        let segredos = [5, 7, 10, 2, 3];
+
+        let entradaDeDados = document.querySelector("input");
+        entradaDeDados.focus();
+
+        function verifica() {
+
+            //Variável de controle do programa
+            let achou = false;
+
+            //Estrutura de repetição para percorrer o Array e que está aninhada apenas com 1° if
+            for (let i = 0; i < segredos.length; i++) {
+                if (entradaDeDados.value == segredos[i]) {
+                    alert("Você ACERTOU !");
+                    achou = true; //Quando entrar nesse bloco de código, vai modificar o valor da variável "achou"
+                    break; //Break, pq senão vai continuar procurando o numero dentro do Array, mesmo após te-lo achado 
+                }
+            }
+
+            // 2° if do programa, que não está aninhado com o for
+            if (achou == false) {
+                alert("Você ERROU !!!");
+            }
+
+            entradaDeDados.value = "";
+            entradaDeDados.focus();
+        }
+
+        let botao = document.querySelector("button");
+        botao.onclick = verifica;
+
+    </script>
+</body>
+
+</html>

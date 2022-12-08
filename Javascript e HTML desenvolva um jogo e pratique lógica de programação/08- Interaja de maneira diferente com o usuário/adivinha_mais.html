@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Adivinha, com Botão</title>
+</head>
+
+<body>
+    <h1>Olá! Tente adivinhar o numero que eu estou pensando!!</h1>
+    <p><strong>Dica!</strong> O numero está entre 1 e 6</p>
+
+    <!-- Foi colocado o "form", pq assim é possível utilizar o "enter" do teclado para acionar o botão -->
+    <form action="">
+        <input type="text" placeholder="Insira o numero aqui">
+        <button>Compare com o meu segredo</button>
+    </form>
+
+    <script>
+        //Quando queremos acessar algum dado que está no "mundo HTML", e esse dados está sendo recebido por meio de uma TAG de entrada (Neste programa: "input"), devemos usar a função "document.querySelector + (TAG que queremos do HTML);". Junto a função, é recomendado utilizar uma variável para guardar o valor.
+        let segredo = Math.round(Math.random() * 10);
+        let entradaDeDados = document.querySelector("input");
+
+        //Foi colocado a função focus aqui, pq assim ao recarregar a página irá automaticamente para o campo do "input"
+        entradaDeDados.focus();
+
+        //Após utilizar a função "document.querySelector + (TAG HTML);", é importante utilizar a função "variável.valeu" para aí sim ter a receber que foi gravado o valor digitado no "mundo HTML"
+        function verifica() {
+            if (entradaDeDados.value == segredo) {
+                alert("Você ACERTOU !");
+            } else {
+                alert("Você ERROU !!! O número era: " + segredo);
+            }
+
+            // Foi colocado a função [vale = ""] e [focus"], pois assim quando a função passar pela estrutura de condição, vai zerar o campo do "input"
+            entradaDeDados.value = "";
+            entradaDeDados.focus();
+        }
+
+        //Agora, queremos associar o clique no botão ao acionamento da função "verifica". Então neste caso, vamos usar a função document.querySelector + (TAG que queremos do HTML) para associar a tag a variável "botão". E após, vamos associar a variável "botão" a função "onclick" e é essa linha de código que vai chamar a função "verifica". IMPORTANTE: Repare que a função nesta linha está sem o (). Pois, se estiver, o programa irá aciona-lá sem a dependente do clique.
+        let botao = document.querySelector("button");
+
+        botao.onclick = verifica;
+
+    </script>
+</body>
+
+</html>
