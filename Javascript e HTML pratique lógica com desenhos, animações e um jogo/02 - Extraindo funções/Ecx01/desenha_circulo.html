@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenha Circulos</title>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+        pincel.fillStyle = 'lightgray';
+        pincel.fillRect(0, 0, 600, 400);
+
+        //Função que estabelece o local de incio do eixo-X, eixo-Y, tamanho do radio e cor
+        function desenhaCirculo(x, y, raio, cor) {
+
+            pincel.fillStyle = cor;
+            pincel.beginPath();
+            pincel.arc(x, y, raio, 0, 2 * 3.14);
+            pincel.fill();
+        }
+
+        //Função que estabecele o local do eixo-X e eixo-Y, chamando a função "desenhaCiruclo"
+        //Dica: Se o raio é 10, então a circunferencia do ciruclo é 20
+        function desenhaFlor(x, y) {
+            desenhaCirculo(x, y, 10, "red");
+            desenhaCirculo(x - 20, y, 10, "orange");
+            desenhaCirculo(x, y - 20, 10, "yellow");
+            desenhaCirculo(x + 20, y, 10, "black");
+            desenhaCirculo(x, y + 20, 10, "blue");
+        }
+
+        desenhaFlor(300, 200);
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+
+        function desenhaQuadradoVerde() {
+
+            let tela = document.querySelector('canvas');
+            let pincel = tela.getContext('2d');
+
+            pincel.fillStyle = 'green';
+            pincel.fillRect(0, 0, 50, 50);
+            pincel.strokeStyle = 'black';
+            pincel.strokeRect(0, 0, 50, 50);
+
+            // Quando não definimos a cor do stroke a cor padrão utilizada é black.No entanto, para mudarmos a cor do stroke para uma cor diferente de preto, precisamos realizar essa operação através da propriedade strokeStyle.Exemplo:
+            // pincel.strokeStyle = 'red'
+            // O código acima adotará a cor vermelha para o stroke.
+        }
+
+        desenhaQuadradoVerde();
+        desenhaQuadradoVerde();
+        desenhaQuadradoVerde();
+
+// Salvaremos e recarregaremos o programa. Entretanto, continuamos vendo apenas um quadrado! Por que isso aconteceu?
+// Isso ocorre porque todas as vezes que chamamos a mesma função, teremos os mesmos parâmetros, assim, os quadrados serão criados exatamente no mesmo lugar! Não é essa a intenção, queremos desenhar os quadrados lado a lado. É o que veremos adiante.
+    </script>
+</body>
+
+</html>
