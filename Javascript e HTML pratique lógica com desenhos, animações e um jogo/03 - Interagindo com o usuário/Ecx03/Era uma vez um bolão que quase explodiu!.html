@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Era uma vez um bolão que quase explodiu!</title>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+        let tela = document.querySelector('canvas');
+        let pincel = tela.getContext('2d');
+
+        pincel.fillStyle = 'grey';
+        pincel.fillRect(0, 0, 600, 400);
+
+        function desenhaCirculo(evento) {
+
+            let x = evento.pageX - tela.offsetLeft;
+            let y = evento.pageY - tela.offsetTop;
+
+            if (evento.shiftKey) {
+                raio = raio + 20;
+            } 
+            pincel.fillStyle = 'blue';
+            pincel.beginPath();
+            pincel.arc(x, y, raio, 0, 2 * 3.14);
+            pincel.fill();
+            console.log(x + ',' + y);
+
+            console.log(raio)
+        }
+
+        let raio = 10; // A primeira coisa que precisamos fazer é extrair a inicialização da variável raio para fora da função desenhaCirculo. Se ela continuasse dentro da função, a cada clique ela voltaria para o valor inicial 10. 
+        // IMPORTANTE: Não é pq o programa aciona a função acima da variável que ele retorna!!!!! Mesma as funções estando no inicio, elas apenas substituim a linha de código, mas não retornam o programa para a linha acima dela!!!
+
+        tela.onclick = desenhaCirculo;
+
+
+    </script>
+</body>
+
+</html>
+
+<!-- Teste o código para lembrar o resultado. Quero propor uma mudança nesse código que é a seguinte: toda vez que o usuário clicar na tela com o SHIFT pressionado, vamos somar 10 ao valor do raio atual. Sendo assim, mesmo soltando o SHIFT as próximas bolinhas utilizarão o mesmo valor de raio. Se clicarmos diversas vezes segurando SHIFT teremos uma bola cada vez maior. -->

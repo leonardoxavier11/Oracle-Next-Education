@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O bolão que deseja emagrecer!</title>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+        let tela = document.querySelector('canvas');
+        let pincel = tela.getContext('2d');
+
+        pincel.fillStyle = 'grey';
+        pincel.fillRect(0, 0, 600, 400);
+
+        let raio = 10;
+
+        function desenhaCirculo(evento) {
+
+            let x = evento.pageX - tela.offsetLeft;
+            let y = evento.pageY - tela.offsetTop;
+
+            console.log(x + ',' + y);
+
+            // if (evento.shiftKey) {
+            //     if (raio < 40) {
+            //         raio = raio + 10;
+            //     }
+            // } else if (evento.altKey) {
+            //     if (raio > 10) {
+            //         raio = raio - 5;
+            //     }
+            // }
+
+            if (evento.shiftKey) {
+                raio = raio + 10;
+                if (raio > 40) {
+                    raio = 40;
+                }
+            } else if (evento.altKey) {
+                raio = raio - 5;
+                if (raio < 10) {
+                    raio = 10;
+                }
+            }
+
+            pincel.fillStyle = 'blue';
+            pincel.beginPath();
+            pincel.arc(x, y, raio, 0, 2 * 3.14);
+            pincel.fill();
+
+        }
+
+        tela.onclick = desenhaCirculo;
+
+    </script>
+</body>
+
+</html>
+
+<!-- Você deve ter ficado tão incomodado quanto eu, porque a bolinha só cresce até tomar conta da tela inteira. Uma das coisas que podemos melhorar é limitar o tamanho de crescimento das bolinhas, ou seja, quero combinar com você que o raio não pode ultrapassar 40. Além disso, se o usuário clicar na tela com a tecla ALT pressionada, o raio deve diminuir 5.
+
+Para saber se a tecla ALT está pressionada, fazemos evento.altKey.
+
+ATENÇÃO: o decremento do raio deverá ser de 5 em 5 e o tamanho mínimo da bolinha deve ser de 10 que é o tamanho original.
+
+IMPORTANTE: SE VOCÊ USA LINUX, USE evento.ctrlKey no lugar de evento.altKey. Isso porque o ALT no linux ativa o menu.
+
+Analise os requisitos do projeto e assinale a alternativa que mais se aproxima de uma possível solução. -->
