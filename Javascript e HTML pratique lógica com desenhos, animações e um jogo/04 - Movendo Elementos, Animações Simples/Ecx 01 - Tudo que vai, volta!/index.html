@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pr-bt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tudo que vai, volta!</title>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+
+        let tela = document.querySelector('canvas');
+        let pincel = tela.getContext('2d');
+
+        function desenhaCirculo(x, y, raio) {
+            pincel.fillStyle = 'blue';
+            pincel.beginPath();
+            pincel.arc(x, y, raio, 0, 2 * Math.PI);
+            pincel.fill();
+        }
+
+        function desenhatela() {
+            pincel.fillStyle = 'lightgrey';
+            pincel.fillRect(0, 0, 600, 400);
+        }
+
+        function limpaTela() {
+            pincel.clearRect(0, 0, 600, 400);
+        }
+
+        let x = 20;
+        let direcao = 1;
+
+        function atualizaTela() {
+            if (direcao == 1) {
+                limpaTela();
+                desenhatela();
+                desenhaCirculo(x, 20, 10);
+                x++;
+                if (x == 600) {
+                    direcao = 0;
+                }
+            } else if (direcao == 0) {
+                limpaTela();
+                desenhatela();
+                desenhaCirculo(x, 20, 10);
+                x--;
+                if (x == 0) {
+                    direcao = 1;
+                }
+            }
+        }
+
+        setInterval(atualizaTela, 10);
+    </script>
+</body>
+
+</html>
+
+<!-- Altere o código para que o círculo, assim que chegar no canto direito da tela, volte. No final, o círculo deve ficar indo e voltando eternamente. -->
