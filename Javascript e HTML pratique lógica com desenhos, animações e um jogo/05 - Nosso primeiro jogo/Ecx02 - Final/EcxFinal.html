@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+        function desenhaQuadrado(x, y, tamanho, cor) {
+            pincel.fillStyle = cor;
+            pincel.fillRect(x, y, tamanho, tamanho)
+            pincel.fill();
+        }
+
+        function desenhaCirculo(x, y, raio, cor) {
+            pincel.fillStyle = cor;
+            pincel.beginPath();
+            pincel.arc(x, y, raio, 0, 2 * 3.14);
+            pincel.fill();
+        }
+
+        function desenhaPaletaDeCores() {
+            desenhaQuadrado(xVermelho, yQuadrados, tamanhoQuadrados, cores[0]);
+            desenhaQuadrado(xVerde, yQuadrados, tamanhoQuadrados, cores[1]);
+            desenhaQuadrado(xAzul, yQuadrados, tamanhoQuadrados, cores[2]);
+        }
+
+        function lidaComMovimentoDoMouse(evento) {
+            let x = evento.pageX - tela.offsetLeft;
+            let y = evento.pageY - tela.offsetTop;
+
+            if ((desenha == true)
+                && (x > 155 || y > 55)) {
+                desenhaCirculo(x, y, 5, corAtual);
+            }
+        }
+
+        function habilitaDesenhar() {
+            desenha = true;
+        }
+
+        function desabilitaDesenhar() {
+            desenha = false;
+        }
+
+        function escolhaCor(evento) {
+            let x = evento.pageX - tela.offsetLeft;
+            let y = evento.pageY - tela.offsetTop;
+
+            if (x >= 0 && x < 50 && y < 50) {
+                return corAtual = cores[0];
+            } else if (x >= 50 && x < 100 && y < 50) {
+                return corAtual = cores[1];
+            } else if (x >= 100 && y < 50) {
+                return corAtual = cores[2];
+            }
+
+        }
+
+        let tela = document.querySelector('canvas');
+        let pincel = tela.getContext('2d');
+        pincel.fillStyle = 'lightgray';
+        pincel.fillRect(0, 0, 600, 400);
+
+        let desenha = false;
+        let corAtual = "blue"
+        let xVermelho = 0;
+        let xVerde = 50;
+        let xAzul = 100;
+        let yQuadrados = 0;
+        let tamanhoQuadrados = 50;
+        let cores = ["red", "green", "blue"]
+
+
+        desenhaPaletaDeCores(); // mostra os quadrados de seleção de cores
+
+        tela.onmousemove = lidaComMovimentoDoMouse; // acompanha o movimento do mouse
+
+        tela.onmousedown = habilitaDesenhar; // enquanto o botão esquerdo estiver clicado, irá habilitar o "desenha"
+
+        tela.onmouseup = desabilitaDesenhar; // quando o botão esquerdo for solto, irá desabilitar o "desenha"
+
+        tela.onclick = escolhaCor; // quando clicar com o botão direito conforme especificações das coordenadas x/y, irá trocar de cor
+
+    </script>
+</body>
+
+</html>
+
+<!-- O desafio desse exercício é trocar a cor utilizada para desenhar o círculo de acordo com o quadrado da cor que clicarmos. Se clicarmos no verde, usaremos a cor verde quando formos desenhar e por aí vai. Outro ponto é que não podemos desenhar em cima da nossa paleta, ou melhor, não podemos desenhar na linha inteira na qual faz parte.
+
+Para solucionar esse problema, você precisará identificar qual quadrado foi clicado, implementando uma lógica de colisão parecida com a que usamos para definir se acertamos um alvo ou não. Veja que como estamos trabalhando com um quadrado, não usamos um raio na lógica de colisão, usamos o tamanho do quadrado, guarde essa dica!
+
+Esse exercício não terá muitas pistas, até porque é um dos exercícios finais do curso. No entanto, como sempre, você terá acesso à resposta do instrutor quando clicar em VER OPINIÃO DO INSTRUTOR. -->
