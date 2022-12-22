@@ -1,0 +1,47 @@
+.titulo-principal {
+    padding-left: 20px;
+}
+
+#banner {
+    width: 100%;
+}
+
+.principal {
+    background-color: #cccccc;
+    padding: 30px;
+} 
+
+.titulo-centralizado {
+    text-align: center;
+}
+
+#missao {
+    font-size: 20px;
+}
+
+p em strong {
+    color: #FF0000;
+}
+
+.itens {
+    font-style: italic;
+}
+
+.beneficios {
+    background-color: white;
+    padding: 20px;
+}
+
+ul {
+    display: inline-block;
+    vertical-align: top; 
+    /* Propriedade para alinhar os itens da linha pelo topo */
+    width: 20%;
+    margin-right: 15%;
+    /* width: 45%; */
+    /* Também poderia usar a propriedade width: 45%, por exemplo */
+}
+
+.imagembeneficios {
+    width: 50%;
+}
