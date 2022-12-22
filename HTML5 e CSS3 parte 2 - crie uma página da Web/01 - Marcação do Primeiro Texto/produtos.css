@@ -37,11 +37,17 @@ nav a {
     text-decoration: none;
 }
 
+nav a:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
 .produtos {
     width: 940px;
     margin: 0 auto;
     padding: 35px 0 ;
 }
+
 
 .produtos li {
     /* O reset.css da Alura não tem o box-sizing: */
@@ -57,6 +63,19 @@ nav a {
     border-radius: 15px;
 }
 
+.produtos li:hover {
+    border: 2.5px solid orange;
+}
+
+.produtos li:active {
+    border: 2.5px solid blue;
+}
+
+.produtos li:hover h2 {
+    font-size: 34px;
+    color: red;
+}
+
 h2 {
     font-size: 30px;
     font-weight: bold;
@@ -70,4 +89,16 @@ h2 {
     font-size: 22px;
     font-weight: bold;
     margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    background: url("bg.jpg");
+    padding: 40px 0;
+}
+
+.copyright {
+    color:white;
+    font-size: 13px;
+    margin-top: 20px;
 }
