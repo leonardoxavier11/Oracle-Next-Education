@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: lightgray;
+    padding: 20px 0px;
+}
+.containerHeader {
+    width: 940px;
+    margin: 0 auto;
+    position: relative;
+}
+
+h1, nav, ul {
+    display: inline;
+}
+
+nav {
+    /* vertical-align: top; */
+    top: 110px;
+    position: absolute;
+    right: 0px;
+}
+
+nav li {
+    display: inline;
+    margin-left: 15px;
+}
+
+nav li a {
+    text-transform: uppercase;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    color:orange;
+    text-decoration: underline;
+}
+
+.titulo-principal {
+    padding-left: 20px;
+}
+
+#banner {
+    width: 100%;
+}
+
+.principal {
+    background-color: #cccccc;
+    padding: 30px;
+} 
+
+.titulo-centralizado {
+    text-align: center;
+}
+
+#missao {
+    font-size: 20px;
+}
+
+main p {
+    text-align: center;
+}
+
+p em strong {
+    color: #FF0000;
+}
+
+.itens {
+    font-style: italic;
+}
+
+.beneficios {
+    width: 1400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+}
+
+main ul {
+    display: inline-block;
+    vertical-align: top; 
+    /* Propriedade para alinhar os itens da linha pelo topo */
+    width: 20%;
+    margin-right: 15%;
+    /* width: 45%; */
+    /* Também poderia usar a propriedade width: 45%, por exemplo */
+}
+
+.imagembeneficios {
+    width: 50%;
+}
+
+footer {
+    text-align: center;
+    background: url("bg.jpg");
+    padding: 40px 0;
+}
+
+.copyright {
+    color:white;
+    font-size: 13px;
+    margin-top: 20px;
+}

@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: lightgray;
+    padding: 20px 0px;
+}
+
+/* Para essa página, eu escolhi usar o FlexBox para alinhamento, mesmo que no curso da Alura não ensine !! */
+/* Então pode haver pequenas diferentes de alinhamento */
+header .containerHeader {
+    display: flex;
+    width: 940px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li{
+    display: inline;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+}
+
+header nav ul li a:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+main .formularios {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0px;
+}
+
+form .label  {
+    display: block;
+    margin: 10px 0px;
+    font-size: 22px;
+}
+
+/* A melhor forma de alinhar o textarea aos demais formulários, é colocando ele com as mesmas propriedades dos demais */
+form .input, form textarea {
+    /* display: block; */
+    width: 50%;
+    margin-bottom: 15px;
+    padding: 10px 25px;
+}
+
+form p {
+    margin-top: 15px;
+    font-size: 22px;
+}
+
+form .radio label{
+    display: block;
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+form .radio label input{
+    margin-right: 10px;
+}
+
+form .checkbox {
+    margin: 15px 0px;
+    /* display: block; */
+    margin-top: 15px;
+    font-size: 22px;
+}
+
+form .button {
+    width: 40%;
+    height: 80px;
+    padding: 15px;
+    color: white;
+    background-color: orange;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+}
+
+form .button:hover {
+    background-color: red;
+    transition: 1s;
+    cursor: pointer;
+    /* transform: scale(1.5); */
+    /* transform: rotate(70deg); */
+    /* transform: rotate(1000deg) scale(3); */
+}
+
+footer {
+    background: url("./bg.jpg");
+    padding: 40px 0px;
+    text-align: center;
+    color: white;
+}
+
+footer .copyright {
+    font-size: 13px;
+    margin-top: 20px;
+}
