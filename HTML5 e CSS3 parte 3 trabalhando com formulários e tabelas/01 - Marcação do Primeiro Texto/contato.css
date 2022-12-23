@@ -41,7 +41,7 @@ header nav ul li a:hover {
     text-decoration: underline;
 }
 
-main .formularios {
+main {
     width: 1200px;
     margin: 0 auto;
     padding: 40px 0px;
@@ -102,6 +102,21 @@ form .button:hover {
     /* transform: scale(1.5); */
     /* transform: rotate(70deg); */
     /* transform: rotate(1000deg) scale(3); */
+}
+
+table {
+    margin: 40px 0px;
+}
+
+thead  {
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
+
+td,th {
+    border: 1px solid black;
+    padding: 8px 15px;
 }
 
 footer {
