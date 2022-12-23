@@ -1,3 +1,6 @@
+
+// O RETORNO DA FUNÇÃO SERVE PARA ATRIBUIR À UMA VARIÁVEL, O RESULTADO DESSE FUNÇÃO
+
 // 1) Há a declaração da variável cor e dps a sua atualização, porém por fim há a chamada da função teste() - > Que atualiza a cor novamente e esreve no navegador
 
 // let cor = "verde";
