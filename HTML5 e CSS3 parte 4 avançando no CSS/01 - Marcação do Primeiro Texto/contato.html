@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- reset.css ensinado pela Alura -->
+    <link rel="stylesheet" href="reset.css">
+
+    <!-- Se faz necessário colocar o css principal abaixo, pois o navegador sempre vai aplicar as customizações do último -->
+    <link rel="stylesheet" href="contato.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:wght@&display=swap" rel="stylesheet">
+
+    <title>Barbearia Alura</title>
+
+<body>
+
+    <header>
+        <div class="containerHeader">
+            <h1><a href="index.html"><img src="logo.png" alt="logo"></a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <form action="">
+            <div>
+                <label for="name" class="label">Nome</label>
+                <input type="text" name="name" id="name" required class="input">
+
+                <label for="email" class="label">Email</label>
+                <input type="email" name="email" id="email" placeholder="email@dominio.com" required class="input">
+
+                <label for="telefone" class="label">Telefone</label>
+                <input type="tel" name="telefone" id="telefone" placeholder="(XX) XXXXX-XXXX" required class="input">
+
+                <label for="msg" class="label">Mensagem</label>
+                <textarea cols="50" rows="10" name="msg" id="msg" required></textarea>
+            </div>
+
+            <fieldset class="radio">
+                <legend>Como legendrefere o nosso contato?</p>
+                    <label for="Email"><input type="radio" id="Email" name="contato" value="Email">Email</label>
+                    <label for="Ligação"><input type="radio" id="Ligação" name="contato" value="Ligação">Ligação</label>
+                    <label for="WhatsApp"><input type="radio" id="WhatsApp" name="contato" value="WhatsApp"
+                            checked>WhatsApp</label>
+                    <!-- Para que o grupo de "radio" funciona corretamente, ou seja, ao marca um irá desmarcar os demais. É preciso que todos estejam no mesmo grupo, ou melhor dizendo: TODOS ESTEJAM COM O MESMO "NAME" !!! -->
+            </fieldset>
+
+            <fieldset>
+                <label for="horario" class="label">Qual horário prefere ser atendido?</label>
+                <select name="horario" id="horario">
+                    <option value="Manhã">Manhã</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noite">Noite</option>
+                </select>
+            </fieldset>
+
+            <div class="checkbox">
+                <input type="checkbox" id="checkbox" name="checkbox" value="checkbox" checked>
+                <label for="checkbox">Gostaria de receber nossas novidades por email?</label>
+            </div>
+
+            <input type="submit" value="Enviar formulário" class="button">
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Dia</th>
+                    <th>Horários</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Segunda</td>
+                    <td>8h ~ 20h</td>
+                </tr>
+                <tr>
+                    <td>Quarta</td>
+                    <td>8h ~ 20h</td>
+                </tr>
+                <tr>
+                    <td>Sexta</td>
+                    <td>8h ~ 20h</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Utilizamos a tag <tr> para marcar uma linha de uma tabela. -->
+        <!-- Utilizamos a tag <td> para marcar uma coluna de uma tabela. -->
+        <!-- As tags <thead>, <tbody> e <tfoot> ajudam a deixar o conteúdo da tabela mais bem dividido e mais semântico. -->
+
+    </main>
+
+    <footer>
+        <img src="./logo-branco.png" alt="logo-barbearia-branco">
+        <p class="copyright">&copy; Copyright Barbearia Alura 2022</p>
+        <!-- Para usar simbolos UNICODE, pode usar o site: https://unicode-table.com/pt/ -->
+    </footer>
+
+</body>
+
+</html>

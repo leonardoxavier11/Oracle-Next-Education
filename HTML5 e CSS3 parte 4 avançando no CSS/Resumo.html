@@ -1,0 +1,46 @@
+01 -
+02 -
+03 - {
+    - Para que serve o posicionamento absolute? R:Para mudar a posição do ponto inicial que ele se encontra
+    [Com o position: absolute, eu consigo posicionar meu elemento em qualquer lugar da página.]
+    OBS: PRECISA ESTUDAR SOBRE POSITION !!!
+}
+
+04 - {
+    - Qual o comportamento do elemento quando adiciono espaçamento interno, o padding? R: O elemento aumenta o seu tamanho. Quando declaro que existe um espaçamento interno, estou aumentando o conteúdo.
+    OBS: PRECISA ESTUDAR SOBRE box-sizing !!!
+    OBS2: PRECISA ESTUDAR SOBRE Seletores Avançados !!!
+    OBS3: PRECISA ESTUDAR SOBRE calc()
+}
+
+05 - {
+    - Opacidade nos elementos. Hoje pode-se usar em tudo: Elementos, fontes, cores, etc
+    - Sombra nos elementos: conceito, propriedade "blur"(desfoque), propriedade de intensidade, quantidade de sombras possível em um mesmo elemento, sombras internas(inset), sombras em textos
+}
+
+06 - {
+    - Meta tag de Viewport e media query
+    - Qual a principal tática para não perder muito tempo criando layouts responsivos?
+    R: Usar medidas proporcionais para tudo e Criar um layout fluido que se adapte sempre
+    
+}
+
+Seletores avançados CSS
+    Seletor >, para acessar os filhos de determinado elemento. Por exemplo, para acessar todos os p dentro de main:
+    main > p {
+    }
+    Seletor +, para acessar o primeiro irmão de determinado elemento. Por exemplo, para acessar o primeiro p após um img:
+    img + p {
+    }
+    Seletor ~, para acessar todos os irmãos de determinado elemento. Por exemplo, para acessar todos os p após um img:
+    img ~ p {
+    }
+    Seletor not, para acessar os elementos, exceto algum. Por exemplo, para acessar todos os p dentro de main, exceto o p que tem id missao:
+    main p:not(#missao) {
+    }
+Como fazer contas com CSS, com a propriedade calc
+
+Como fazer uma sombra interna em um elemento?
+    box-shadow: inset 0 0 5px black;
+
+Sombra interna, preta, com 5px de espalhamento.

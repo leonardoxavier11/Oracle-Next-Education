@@ -1,0 +1,108 @@
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} Ao invés de usar esse comando, o curso da Alura ensinou a usar o reset.css, pelo link */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    /* width: 100%; */
+    /* height:40vh; */
+    background-color: lightgray;
+    padding: 20px 0px;
+}
+
+.containerHeader {
+    width: 940px;
+    position: relative;
+    margin: 0 auto;
+}
+
+nav {
+    position: absolute;
+    top: 110px;
+    right: 0px;
+}
+
+nav li {
+    display: inline;
+    margin: 0 0 0 15px;
+}
+
+nav a {
+    text-transform: uppercase;
+    /* Propriedade para deixar em maisculos */
+    color: black;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: orange;
+    text-decoration: underline;
+}
+
+.produtos {
+    width: 940px;
+    margin: 0 auto;
+    padding: 35px 0 ;
+}
+
+
+.produtos li {
+    /* O reset.css da Alura não tem o box-sizing: */
+    box-sizing: border-box;
+    display: inline-block;
+    width: 30%;
+    height: 400px;
+    vertical-align: top;
+    text-align: center;
+    margin: 0 1.5%;
+    padding: 30px 20px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.produtos li:hover {
+    border: 2.5px solid orange;
+}
+
+.produtos li:active {
+    border: 2.5px solid blue;
+}
+
+.produtos li:hover h2 {
+    font-size: 30px;
+    color: red;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.produto-descricao {
+    font-size: 16px;
+}
+
+.produto-preco {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    background: url("bg.jpg");
+    padding: 40px 0;
+}
+
+.copyright {
+    color:white;
+    font-size: 13px;
+    margin-top: 20px;
+}
