@@ -2,7 +2,13 @@ function criptografarTexto() {
     sumirImg();
     aparecerImg();
 
-    let novaPalavra = "";
+    let novaPalavra = ""; // Se faz necessário criar a variável "novaPalavra" dentro da função, para que seja "zerada" toda vez que clicar no botão de criptografar
+
+//Se faz necessário criar dois "for (i E j)" para que seja quando tiver lento o primeiro caracter do texto inserido, percorrer todo o "array01" para saber se o caracter existe dentro dele.
+//Caso seja encontrato, irá retornor o caracter da mesma posição que está no "array02". Pois estamos falando de listas ordenadas.
+//Caso não seja encontrado, irá retorno o próprio caracter que foi inserido no input. Através da condição (j == array01.length - 1), onde J sempre estará atualizado com o final após todas as posições do array
+//As opções serão "gravadas" na variável "novaPalavra"
+//O "console.log(j)", foi inserido apenas para ajudar a criar a lógica da função
 
     for (let i = 0; i < textInput.value.length; i++) {
         for (j = 0; j < array01.length; j++) {
