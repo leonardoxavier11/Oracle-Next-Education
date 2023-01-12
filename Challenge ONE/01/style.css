@@ -27,6 +27,11 @@ main {
     line-height: 48px;
 }
 
+.main .typing #text01::placeholder {
+    color: blue;
+    opacity: 0.5;
+}
+
 img {
     border-radius: 25px;
     min-height: 100%;
@@ -59,12 +64,15 @@ img {
 }
 
 aside #container-descriptografia {
+    flex-direction: column;
+    justify-content: space-between;
     background-color: white;
     border-radius: 25px;
     min-height: 100%;
     width: 250px;
-    text-align: center;
+    align-items: center;
     display: none;
+    padding: 15px 0;
 }
 
 aside p {
@@ -72,4 +80,22 @@ aside p {
     font-size: 26px;
     font-weight: 400;
     line-height: 48px;
+}
+
+#container-descriptografia .btn04{
+    width: 80%;
+    padding: 20px;
+    border-radius: 24px;
+    border: none;
+    background-color: #E5E5E5;
+    border: 1px solid blue;
+    color: blue;
+    cursor: pointer;
+}
+
+#container-descriptografia .btn04:active{
+    transition: 0.1s all;
+    transform: scale(0.9); /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); /* Lowering the shadow */
+
 }

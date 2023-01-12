@@ -10,16 +10,21 @@
 </head>
 
 <body>
+    <header></header>
     <main>
         <div class="main">
             <section class="typing">
-                <textarea name="text01" id="text01" cols="30" rows="10" placeholder="Digite seu texto"></textarea>
+                <textarea name="text01" id="text01" cols="30" rows="10" placeholder="Digite seu texto"
+                    required></textarea>
             </section>
 
             <section class="buttons">
-                <p class="alert">Apenas letras minúsculas e sem acento.</p>
-                <button type="submit" class="btn btn01">Criptografar</button>
-                <button type="submit" class="btn btn02">Descriptografar</button>
+                <form action="">
+                    <p class="alert">Apenas letras minúsculas e sem acento.</p>
+                    <button type="button" class="btn btn01">Criptografar</button>
+                    <button type="button" class="btn btn02">Descriptografar</button>
+                    <button type="submit" class="btn btn03">Reset</button>
+                </form>
             </section>
         </div>
 
@@ -27,6 +32,7 @@
             <img src="./1.png" alt="" id="img">
             <div id="container-descriptografia">
                 <p id="output-text"></p>
+                <button type="button" class="btn btn04">Copy!</button>
             </div>
         </aside>
 
