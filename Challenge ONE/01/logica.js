@@ -15,9 +15,9 @@ function existeTexto() {
 }
 
 function criptografarTexto() {
-    novaPalavra = ""; // Se faz necessário criar a variável "novaPalavra" dentro da função, para que seja "zerada" toda vez que clicar no botão de criptografar
-
     existeTexto();
+
+    novaPalavra = ""; // Se faz necessário criar a variável "novaPalavra" dentro da função, para que seja "zerada" toda vez que clicar no botão de criptografar
 
     //Se faz necessário criar dois "for (i E j)" para que seja quando tiver lento o primeiro caracter do texto inserido, percorrer todo o "array01" para saber se o caracter existe dentro dele.
     //Caso seja encontrato, irá retornor o caracter da mesma posição que está no "array02". Pois estamos falando de listas ordenadas.
@@ -25,15 +25,16 @@ function criptografarTexto() {
     //As opções serão "gravadas" na variável "novaPalavra"
     //O "console.log(j)", foi inserido apenas para ajudar a criar a lógica da função
 
-    for (let i = 0; i < textInput.value.length; i++) {
+    let texto = textInput.value;
+    for (let i = 0; i < texto.length; i++) {
         for (j = 0; j < array01.length; j++) {
-            if (textInput.value[i] === array01[j]) {
+            if (texto[i] === array01[j]) {
                 // alert("A letra " + array01[j] + " está na posição " + j + " e vai ser substituido por " + array02[j])
                 novaPalavra += array02[j];
                 break
             }
             else if (j === array01.length - 1) {
-                novaPalavra += textInput.value[i]
+                novaPalavra += texto[i]
             }
             console.log(j)
         }
@@ -42,13 +43,16 @@ function criptografarTexto() {
 }
 
 function descriptografarTexto() {
+    //Ao invés de usar dois "for" para percorrer os arrays, pode ser usado a função nativa do JavaScript "replace"
     existeTexto();
+    novaPalavra = "";
+
     let texto = textInput.value;
-    novaPalavra = texto.replace(/enter/gim, 'e')
-    novaPalavra = novaPalavra.replace(/ober/gim, 'o')
-    novaPalavra = novaPalavra.replace(/imes/gim, 'i')
-    novaPalavra = novaPalavra.replace(/ai/gim, 'a')
-    novaPalavra = novaPalavra.replace(/ufat/gim, 'u')
+    novaPalavra = texto.replace(/enter/gim, array01[0])
+    novaPalavra = novaPalavra.replace(/imes/gim, array01[1])
+    novaPalavra = novaPalavra.replace(/ai/gim, array01[2])
+    novaPalavra = novaPalavra.replace(/ober/gim, array01[3])
+    novaPalavra = novaPalavra.replace(/ufat/gim, array01[4])
 
     document.getElementById("output-text").innerHTML = novaPalavra
 }
