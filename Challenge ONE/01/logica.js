@@ -1,3 +1,10 @@
+function existeTexto() {
+    //Se faz necessário esse "if" para que a imagem não suma, mesmo quando não tiver nada escrito no "text area"
+    if (textInput.value.length > 0) {
+        sumirImg();
+        aparecerContainer();
+    }
+}
 
 function sumirImg() {
     document.getElementById("img").style.display = "none"
@@ -11,11 +18,7 @@ function criptografarTexto() {
 
     novaPalavra = ""; // Se faz necessário criar a variável "novaPalavra" dentro da função, para que seja "zerada" toda vez que clicar no botão de criptografar
 
-    //Se faz necessário esse "if" para que a imagem não suma, mesmo quando não tiver nada escrito no "text area"
-    if (textInput.value.length > 0) {
-        sumirImg();
-        aparecerContainer();
-    }
+    existeTexto()
 
 
     //Se faz necessário criar dois "for (i E j)" para que seja quando tiver lento o primeiro caracter do texto inserido, percorrer todo o "array01" para saber se o caracter existe dentro dele.
