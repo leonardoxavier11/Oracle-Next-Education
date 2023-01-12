@@ -80,6 +80,7 @@ aside p {
     font-size: 26px;
     font-weight: 400;
     line-height: 48px;
+    word-break: break-all; /* Para quebrar as linhas do parágrafo */
 }
 
 #container-descriptografia .btn04{
