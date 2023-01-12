@@ -1,11 +1,3 @@
-function existeTexto() {
-    //Se faz necessário esse "if" para que a imagem não suma, mesmo quando não tiver nada escrito no "text area"
-    if (textInput.value.length > 0) {
-        sumirImg();
-        aparecerContainer();
-    }
-}
-
 function sumirImg() {
     document.getElementById("img").style.display = "none"
 }
@@ -14,12 +6,18 @@ function aparecerContainer() {
     document.getElementById("container-descriptografia").style.display = "flex"
 }
 
-function criptografarTexto() {
+function existeTexto() {
+    //Se faz necessário esse "if" para que a imagem não suma, mesmo quando não tiver nada escrito no "text area"
+    if (textInput.value.length > 0) {
+        sumirImg();
+        aparecerContainer();
+    }
+}
 
+function criptografarTexto() {
     novaPalavra = ""; // Se faz necessário criar a variável "novaPalavra" dentro da função, para que seja "zerada" toda vez que clicar no botão de criptografar
 
-    existeTexto()
-
+    existeTexto();
 
     //Se faz necessário criar dois "for (i E j)" para que seja quando tiver lento o primeiro caracter do texto inserido, percorrer todo o "array01" para saber se o caracter existe dentro dele.
     //Caso seja encontrato, irá retornor o caracter da mesma posição que está no "array02". Pois estamos falando de listas ordenadas.
@@ -43,11 +41,17 @@ function criptografarTexto() {
     document.getElementById("output-text").innerHTML = novaPalavra
 }
 
-// function descriptografarTexto {
+function descriptografarTexto() {
+    existeTexto();
+    let texto = textInput.value;
+    novaPalavra = texto.replace(/enter/gim, 'e')
+    novaPalavra = novaPalavra.replace(/ober/gim, 'o')
+    novaPalavra = novaPalavra.replace(/imes/gim, 'i')
+    novaPalavra = novaPalavra.replace(/ai/gim, 'a')
+    novaPalavra = novaPalavra.replace(/ufat/gim, 'u')
 
-
-
-// }
+    document.getElementById("output-text").innerHTML = novaPalavra
+}
 
 function copiarTexto() {
     navigator.clipboard.writeText(novaPalavra).then(() => {
@@ -57,17 +61,22 @@ function copiarTexto() {
     });
 }
 
+//Arrays
 const array01 = ["e", "i", "a", "o", "u"];
 const array02 = ["enter", "imes", "ai", "ober", "ufat"]
 
+//Variáveis
 let novaPalavra;
 
 let encryptButton = document.querySelector(".btn01");
+let decryptButton = document.querySelector(".btn02")
 let copyButton = document.querySelector(".btn04");
 
 let textInput = document.querySelector("textarea");
 
+//Buttons
 encryptButton.onclick = criptografarTexto;
+decryptButton.onclick = descriptografarTexto;
 copyButton.onclick = copiarTexto;
 
 
