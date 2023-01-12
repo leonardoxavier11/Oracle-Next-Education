@@ -25,6 +25,7 @@ main {
     font-size: 26px;
     font-weight: 400;
     line-height: 48px;
+    resize: none; /* desabilitar a mobilidade do Textarea */
 }
 
 .main .typing #text01::placeholder {
