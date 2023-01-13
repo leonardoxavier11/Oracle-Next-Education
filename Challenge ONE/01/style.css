@@ -53,16 +53,12 @@ img {
 .buttons .btn01{
     background-color: #0A3871;
     color: white;
-    cursor: pointer;
-
 }
 
 .buttons .btn02{
     background-color: #E5E5E5;
     border: 1px solid blue;
     color: blue;
-    cursor: pointer;
-
 }
 
 aside #container-descriptografia {
@@ -93,12 +89,11 @@ aside p {
     background-color: #E5E5E5;
     border: 1px solid blue;
     color: blue;
-    cursor: pointer;
 }
 
-#container-descriptografia .btn04:active{
-    transition: 0.1s all;
+.btn:hover{
+    cursor: pointer;
+    transition: 0.2s all;
     transform: scale(0.9); /* Scaling button to 0.98 to its original size */
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24); /* Lowering the shadow */
-
 }
