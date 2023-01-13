@@ -48,20 +48,22 @@ function descriptografarTexto() {
     let texto = textInput.value;
     let i = 0;
 
+    // let regex01 = array01[i];
+    // let regex02 = array01[i];
+
     novaPalavra = texto.replaceAll(array02[i], array01[i]);
 
     for (i = 1; i < array01.length; i++) {
         novaPalavra = novaPalavra.replaceAll(array02[i], array01[i]);
+
+        // o "for" substitui essa grande quantidade de linhas repetidas abaixo:
+        //     novaPalavra = novaPalavra.replaceAll(array02[1], array01[1])
+        //     novaPalavra = novaPalavra.replaceAll(array02[2], array01[2])
+        //     novaPalavra = novaPalavra.replaceAll(array02[3], array01[3])
+        //     novaPalavra = novaPalavra.replaceAll(array02[4], array01[4])
     }
 
     document.getElementById("output-text").innerHTML = novaPalavra
-
-    // o "for" substitui essa grande quantidade de linhas repetidas abaixo:
-    //     novaPalavra = texto.replaceAll(array02[0], array01[0])
-    //     novaPalavra = novaPalavra.replaceAll(array02[1], array01[1])
-    //     novaPalavra = novaPalavra.replaceAll(array02[2], array01[2])
-    //     novaPalavra = novaPalavra.replaceAll(array02[3], array01[3])
-    //     novaPalavra = novaPalavra.replaceAll(array02[4], array01[4])
 }
 
 function copiarTexto() {
