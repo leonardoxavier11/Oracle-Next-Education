@@ -42,42 +42,27 @@ function criptografarTexto() {
     document.getElementById("output-text").innerHTML = novaPalavra
 }
 
-// function descriptografarTexto() {
-//     //Tentando reduzir o tamanho da função com o "for" - AInda não está funcioanndo
-//     existeTexto();
-
-//     let texto = textInput.value;
-//     let i = 0;
-
-//     const regex1 = array01[i];
-//     const regex2 = array02[i];
-
-//     novaPalavra = texto.replaceAll(regex2, regex1);
-
-//     for (i = 1; i < array01.length; i++) {
-//         novaPalavra = novaPalavra.replaceAll(regex2, regex1);
-//     }
-
-//     document.getElementById("output-text").innerHTML = novaPalavra
-// }
-
 function descriptografarTexto() {
-    //ESSA FUNÇÃO ESTÁ FUNCIONANDO CORRETAMENTE !
-
-    //Ao invés de usar dois "for" para percorrer os arrays, pode ser usado a função nativa do JavaScript "replace"
     existeTexto();
 
     let texto = textInput.value;
+    let i = 0;
 
-    novaPalavra = texto.replaceAll(array02[0], array01[0])
-    novaPalavra = novaPalavra.replaceAll(array02[1], array01[1])
-    novaPalavra = novaPalavra.replaceAll(array02[2], array01[2])
-    novaPalavra = novaPalavra.replaceAll(array02[3], array01[3])
-    novaPalavra = novaPalavra.replaceAll(array02[4], array01[4])
+    novaPalavra = texto.replaceAll(array02[i], array01[i]);
+
+    for (i = 1; i < array01.length; i++) {
+        novaPalavra = novaPalavra.replaceAll(array02[i], array01[i]);
+    }
 
     document.getElementById("output-text").innerHTML = novaPalavra
-}
 
+    // o "for" substitui essa grande quantidade de linhas repetidas abaixo:
+    //     novaPalavra = texto.replaceAll(array02[0], array01[0])
+    //     novaPalavra = novaPalavra.replaceAll(array02[1], array01[1])
+    //     novaPalavra = novaPalavra.replaceAll(array02[2], array01[2])
+    //     novaPalavra = novaPalavra.replaceAll(array02[3], array01[3])
+    //     novaPalavra = novaPalavra.replaceAll(array02[4], array01[4])
+}
 
 function copiarTexto() {
     navigator.clipboard.writeText(novaPalavra).then(() => {
