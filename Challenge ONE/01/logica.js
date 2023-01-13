@@ -48,8 +48,8 @@ function descriptografarTexto() {
     let texto = textInput.value;
     let i = 0;
 
-    // let regex01 = array01[i];
-    // let regex02 = array01[i];
+    // let regex01 = /array01[i]/i;
+    // let regex02 = /array01[i]/i;
 
     novaPalavra = texto.replaceAll(array02[i], array01[i]);
 
@@ -68,9 +68,9 @@ function descriptografarTexto() {
 
 function copiarTexto() {
     navigator.clipboard.writeText(novaPalavra).then(() => {
-        console.log('Content copied to clipboard');
+        console.log("Copiado");
     }, () => {
-        console.error('Failed to copy');
+        console.error("Falhou em tentar copiar");
     });
 }
 
