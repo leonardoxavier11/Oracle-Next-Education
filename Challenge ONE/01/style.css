@@ -48,9 +48,13 @@ main {
     opacity: 0.5;
 }
 
-.buttons p {
-    margin-bottom: 15px;
+.buttons img {
     padding-left: 15px;
+}
+
+.buttons p {
+    display: inline-block;
+    margin-bottom: 15px;
     font-size: 12px;
     line-height: 18px;
     font-weight: 400px;
