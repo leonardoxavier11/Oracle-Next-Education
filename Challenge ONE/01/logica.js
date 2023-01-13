@@ -49,7 +49,7 @@ function descriptografarTexto() {
     let i = 0;
 
     // let regex01 = /array01[i]/i;
-    // let regex02 = /array01[i]/i;
+    // let regex02 = /array02[i]/i;
 
     novaPalavra = texto.replaceAll(array02[i], array01[i]);
 
