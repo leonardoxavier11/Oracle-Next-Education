@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>bytebank (entendendo_OO)</name>
+	<name>bytebank_composto</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>0</id>
+			<id>1676945793547</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
