@@ -5,5 +5,5 @@
  * @author leona
  *
  */
-module bybank_encapsulado {
+module bytebank_herdado {
 }
