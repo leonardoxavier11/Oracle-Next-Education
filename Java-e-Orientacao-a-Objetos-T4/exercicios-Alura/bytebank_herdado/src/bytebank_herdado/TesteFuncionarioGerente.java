@@ -1,6 +1,6 @@
 package bytebank_herdado;
 
-public class TesteFuncionario {
+public class TesteFuncionarioGerente {
 
 	public static void main(String[] args) {
 

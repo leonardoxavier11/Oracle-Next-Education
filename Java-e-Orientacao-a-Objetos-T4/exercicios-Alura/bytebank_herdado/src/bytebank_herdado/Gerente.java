@@ -54,10 +54,21 @@ public class Gerente extends Funcionario {
 	// Para deixarmos isso explícito em nosso código, ou seja, que o `salario` vem
 	// da super classe, há uma outra palavra que podemos utilizar, que é `super`:
 
-	public double getBonificacao() {
-		return super.salario;
-	}
-	
+//	public double getBonificacao() {
+//		return super.salario;
+//	}
+
 	// Temos o método definido na classe mãe, e redefinimos este método na classe
 	// filha, ou seja, fizemos a reescrita do método.
+
+	// Agora, vamos considerar a a empresa muda constantemente a sua política de
+	// remuneração, nesse caso não é adquado ficar modificando toda hora o
+	// "getBonificação" do Gerente. Podemos simplismente vincula-lo ao getBonificação
+	// da Class Funcionário + alguma outra variável, se houver.
+	
+	//No exemplo abaixo, o Gerente recebe a bonificação padrão (10%) + seu próprio salário.
+
+	public double getBonificacao() {
+		return super.getBonificacao() + super.getSalario();
+	}
 }
