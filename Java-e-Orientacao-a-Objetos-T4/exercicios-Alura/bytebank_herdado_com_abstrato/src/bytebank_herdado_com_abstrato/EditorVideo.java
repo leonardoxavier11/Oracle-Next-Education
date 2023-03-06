@@ -1,6 +1,6 @@
 package bytebank_herdado_com_abstrato;
 
-//EditorVideo eh um Funcionario, Gerente herda da class Funcionario
+//EditorVideo eh um Funcionario, EditorVideo herda da class Funcionario
 public class EditorVideo extends Funcionario {
 	
 	public double getBonificacao() {

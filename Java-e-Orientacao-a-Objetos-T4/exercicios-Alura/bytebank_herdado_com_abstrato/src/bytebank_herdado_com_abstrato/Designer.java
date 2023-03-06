@@ -1,6 +1,6 @@
 package bytebank_herdado_com_abstrato;
 
-//Designer eh um Funcionario, Gerente herda da class Funcionario
+//Designer eh um Funcionario, Designer herda da class Funcionario
 public class Designer extends Funcionario {
 	
 	public double getBonificacao() {
