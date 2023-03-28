@@ -3,7 +3,7 @@ package Aula;
 public class Video implements AcoesVideo {
 
 	private String titulo;
-	private int avaliacao;
+	private double avaliacao;
 	private int views;
 	private int curtidas;
 	private boolean reproduzindo;
@@ -12,11 +12,13 @@ public class Video implements AcoesVideo {
 	@Override
 	public void play() {
 		this.reproduzindo = true;
+		System.out.println("Reproduzindo o Video");
 	}
 
 	@Override
 	public void pause() {
 		this.reproduzindo = false;
+		System.out.println("Pausando o Video");
 	}
 
 	@Override
@@ -37,8 +39,17 @@ public class Video implements AcoesVideo {
 		return avaliacao;
 	}
 
-	public void setAvaliacao(int avaliacao) {
-		this.avaliacao = avaliacao;
+	public void setAvaliacao(double avaliacao) {
+		if (this.views <= 1) {
+			this.avaliacao = avaliacao;
+		} else {
+			double novaAvalicao;
+			novaAvalicao = ((this.avaliacao * (this.views - 1)) + avaliacao) / this.views;
+			this.avaliacao = novaAvalicao;
+			// Modificamos o método setters original, para que a avaliação do video seja a
+			// média das avaliações recebidas e não a última recebida
+		}
+
 	}
 
 	public int getViews() {
