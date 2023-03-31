@@ -1,15 +1,15 @@
 package Aula;
 
-public class Fluxo {
+public class FluxoComTratamento02_AntesDeCriarEXCECAO {
 
 	public static void main(String[] args) {
 		System.out.println("Ini do main");
 		try {
 			metodo1();
-		} catch (ArithmeticException | NullPointerException | MinhaExcecao ex) {
+		} catch (ArithmeticException | NullPointerException ex) {
 			String msg = ex.getMessage();
 			System.out.println("Exception: " + msg);
-//			ex.printStackTrace();
+			ex.printStackTrace();
 		}
 		System.out.println("Fim do main");
 	}
@@ -25,16 +25,12 @@ public class Fluxo {
 //		ArithmeticException ex = new ArithmeticException("deu errado"); 
 //		throw ex;
 
-		throw new MinhaExcecao("deu muito errado"); // Ao instanciar uma exceção, podemos passar um parametro que vai
-												// funcionar como uma mensagem
-
+		throw new ArithmeticException("deu errado"); // Ao instanciar uma exceção, podemos passar um parametro que vai
+														// funcionar como uma mensagem
+		
 //		O throw é uma palavra-chave que é usada para lançar uma exceção explicitamente
 
 //		System.out.println("Fim do metodo2");
 	}
-
-	// --> Agora criamos a classe "MinhaExcecao", copiando o modelo da
-	// "ArithmeticException", ou seja, colocando um construtor sem parametro e um
-	// com parametro de String e depois adicionamos essa nova classe no "Try Catch"
 
 }
