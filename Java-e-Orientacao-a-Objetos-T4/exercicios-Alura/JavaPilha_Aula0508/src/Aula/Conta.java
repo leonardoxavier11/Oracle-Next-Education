@@ -17,7 +17,7 @@ public abstract class Conta {
 		// System.out.println("Estou criando uma conta " + this.numero);
 	}
 
-	public abstract void deposita(double valor);
+	public abstract void deposita(double valor) throws MinhaExcecao;
 
 	public void saca(double valor) {
 //	public boolean saca(double valor) {
