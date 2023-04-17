@@ -58,6 +58,4 @@ public class TestaListaDeAula {
 		System.out.println("------");
 
 	}
-	
-	
 }
