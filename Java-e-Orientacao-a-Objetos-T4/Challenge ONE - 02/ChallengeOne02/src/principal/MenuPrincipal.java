@@ -1,7 +1,6 @@
 package principal;
 
 import java.util.InputMismatchException;
-import java.util.Locale;
 import java.util.Scanner;
 
 import conversorMoedas.ConversorDeMoedasMenu;
@@ -21,7 +20,7 @@ public class MenuPrincipal {
 			int opcao = scanner.nextInt();
 
 			while (opcao != 1 && opcao != 2) {
-				System.out.println("Opcao inválida");
+				System.out.println("Opcao inválida. Tente novamente:");
 				opcao = scanner.nextInt();
 			}
 
