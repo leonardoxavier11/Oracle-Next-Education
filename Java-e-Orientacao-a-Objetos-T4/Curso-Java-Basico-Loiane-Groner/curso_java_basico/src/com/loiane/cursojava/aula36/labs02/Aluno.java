@@ -6,7 +6,6 @@ public class Aluno {
 	private String nome;
 	private int matricula;
 	private double[] notas;
-	static double mediaNotasTurma;
 
 	public Aluno(String nome) {
 		this.nome = nome;
