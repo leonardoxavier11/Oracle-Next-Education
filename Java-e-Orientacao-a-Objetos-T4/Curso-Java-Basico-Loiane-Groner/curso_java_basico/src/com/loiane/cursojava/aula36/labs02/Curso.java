@@ -23,25 +23,21 @@ public class Curso {
 		return alunos;
 	}
 
-	public List<Aluno> getAlunoIndividual(int i) {
-		this.alunos.get(i);
-	}
-
 	public void setAlunos(Aluno alunos) {
 		this.alunos.add(alunos);
 	}
 
 	public int qntAlunos() {
-		int qntoAlunos = 0;
-		for (int i = 0; i < alunos.size(); i++) {
-			qntoAlunos++;
-		}
-		return qntoAlunos;
+		return alunos.size();
+	}
+
+	public void media() {
+		
 	}
 
 	@Override
 	public String toString() {
-		return "Curso [nome=" + nome + ", horario=" + horario + ", professor=" + professor + ", alunos=" + alunos + "]";
+		return "Curso [nome=" + nome + ", horario=" + horario + ", \n" + professor + ", \n" + alunos + "]";
 	}
 
 }
