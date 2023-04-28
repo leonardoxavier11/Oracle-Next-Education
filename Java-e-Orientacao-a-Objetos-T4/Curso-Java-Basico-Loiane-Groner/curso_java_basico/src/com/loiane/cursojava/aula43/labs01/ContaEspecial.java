@@ -1,15 +1,15 @@
 package com.loiane.cursojava.aula43.labs01;
 
 public class ContaEspecial extends Conta {
-	final private String tipoConta = "Conta Especial";
+	final private String TIPOCONTA = "Conta Especial";
 	private double limite = 500;
 	private double taxa = 0.1;
 
 	public ContaEspecial(String nomeCliente, double saldo) {
 		super(nomeCliente, saldo);
-		super.setTipoConta(tipoConta); // Não entendi a necessidade dessa linha, mas caso não exista o retorno é
+		super.setTipoConta(TIPOCONTA); // Não entendi a necessidade dessa linha, mas caso não exista o retorno é
 										// "null".
-		System.out.println("Você criou uma " + tipoConta + " com limite de: R$ " + limite + "\n");
+		System.out.println("Você criou uma " + TIPOCONTA + " com limite de: R$ " + limite + "\n");
 	}
 
 	public double getLimite() {
@@ -21,7 +21,7 @@ public class ContaEspecial extends Conta {
 	}
 
 	public String getTipo() {
-		return tipoConta;
+		return TIPOCONTA;
 	}
 
 	// Métodos

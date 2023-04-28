@@ -1,12 +1,12 @@
 package com.loiane.cursojava.aula43.labs02;
 
 public class PessoaFisica extends Contribuintes {
-	final private String tipoContribuinte = "Pessoa Fisica";
+	final private String TIPOCONTRIBUINTE = "Pessoa Fisica";
 	private double imposto;
 
 	public PessoaFisica(String nome) {
 		super(nome);
-		super.setTipoContribuinte(this.tipoContribuinte);
+		super.setTipoContribuinte(this.TIPOCONTRIBUINTE);
 	}
 
 	public double getImposto() {
@@ -40,7 +40,7 @@ public class PessoaFisica extends Contribuintes {
 
 	@Override
 	public String toString() {
-		return "Contribuintes [nome=" + super.getNome() + ", tipoContribuinte=" + this.tipoContribuinte + ", imposto="
+		return "Contribuintes [nome=" + super.getNome() + ", tipoContribuinte=" + this.TIPOCONTRIBUINTE + ", imposto="
 				+ this.imposto + "]";
 	}
 
