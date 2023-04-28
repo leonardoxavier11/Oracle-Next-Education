@@ -2,6 +2,7 @@ package com.loiane.cursojava.aula36.labs02;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Curso {
 
@@ -15,7 +16,7 @@ public class Curso {
 		this.horario = horario;
 	}
 
-	public void adicionarProfessor(Professor professor) {
+	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
 
@@ -23,16 +24,32 @@ public class Curso {
 		return alunos;
 	}
 
-	public void setAlunos(Aluno alunos) {
+	public void setAluno(Aluno alunos) {
 		this.alunos.add(alunos);
+	}
+
+	public void removerAluno(int matricula) {
+		for (Aluno aluno : alunos) {
+			if (aluno.getMatricula() == matricula) {
+				alunos.remove(aluno);
+				return;
+			}
+		}
+		System.out.println("Essa matricula não está associada a nenhum aluno");
 	}
 
 	public int qntAlunos() {
 		return alunos.size();
 	}
 
-	public void media() {
-		
+	public int matriculaNovoAluno() {
+		if (alunos.size() != 0) {
+			int index = alunos.size() - 1;
+			return alunos.get(index).getMatricula() + 1;
+		}
+		return 1; // Não tem oq fazer, só quando tiver um banco de dados para ter histórico de
+					// matriculas dos demitidos
+
 	}
 
 	@Override
