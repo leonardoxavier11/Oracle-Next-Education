@@ -29,7 +29,7 @@ public class ContaEspecial extends Conta {
 	public String sacar(double valor) {
 		if (super.getSaldo() > 0 || super.getSaldo() >= valor) {
 			super.setSaldo(super.getSaldo() - valor - (valor * taxa));
-			return "Saque realizado com sucesso.Seu novo saldo é de: R$ " + super.getSaldo();
+			return "Saque realizado com sucesso.Seu novo saldo é de: R$ " + super.getSaldo() + ". Pois foi descontado uma taxa de " + taxa + "%";
 		} else {
 			return "Não há valor disponível para fazer esse saque. Valor total: " + super.getSaldo();
 		}

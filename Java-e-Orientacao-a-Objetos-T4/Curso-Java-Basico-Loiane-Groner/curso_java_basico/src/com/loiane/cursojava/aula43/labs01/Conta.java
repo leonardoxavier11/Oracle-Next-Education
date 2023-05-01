@@ -76,9 +76,10 @@ public abstract class Conta {
 				+ tipoConta + "]";
 	}
 
-	public void calcularNovoSaldoAposMeses(int meses) {
-	}; // Não é a menlhor maneira de acesar o método da class
-		// ContaPoupanca. Então deve estudar mais (Ficou
-		// tipo um método abstrato)
+//	public void calcularNovoSaldoAposMeses(int meses) {
+//	}; // Não é a menlhor maneira de acesar o método da class
+//		// ContaPoupanca. Então deve estudar mais (Ficou
+//		// tipo um método abstrato) ->Acho que dá para fazer um casting e transformar a
+//		// variável que for Conta em ContaPoupanca, na chamada.
 
 }

@@ -47,28 +47,30 @@ public class ControleContas {
 	}
 
 	public static String localizarSacar(int numContaProcurado) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Quanto você quer sacar?");
-		double valor = scan.nextDouble();
-		for (Conta conta : contas) {
-			if (conta.getNumConta() == (numContaProcurado)) {
-				System.out.println("Conta encontrada: " + conta);
+		try (Scanner scan = new Scanner(System.in)) {
+			System.out.println("Quanto você quer sacar?");
+			double valor = scan.nextDouble(); // Adicionar verificação para saque maior que 0.0
+			for (Conta conta : contas) {
+				if (conta.getNumConta() == (numContaProcurado)) {
+					System.out.println("Conta encontrada: " + conta);
 //				System.out.println(conta.sacar(valor)); // chama o método sacar na conta encontrada
-				return conta.sacar(valor); // chama o método sacar na conta encontrada
+					return conta.sacar(valor); // chama o método sacar na conta encontrada
 //				return null 
+				}
 			}
 		}
 		return "Conta não encontrada";
 	}
 
 	public static String localizarDepositar(int numContaProcurado) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Quanto você quer depositar?");
-		double valor = scan.nextDouble();
-		for (Conta conta : contas) {
-			if (conta.getNumConta() == (numContaProcurado)) {
-				System.out.println("Conta encontrada: " + conta);
-				return conta.depostiar(valor);
+		try (Scanner scan = new Scanner(System.in)) {
+			System.out.println("Quanto você quer depositar?");
+			double valor = scan.nextDouble();
+			for (Conta conta : contas) {
+				if (conta.getNumConta() == (numContaProcurado)) {
+					System.out.println("Conta encontrada: " + conta);
+					return conta.depostiar(valor);
+				}
 			}
 		}
 		return "Conta não encontrada";
@@ -76,15 +78,20 @@ public class ControleContas {
 
 	public static String localizarProjetarPoupanca(int numContaProcurado) { // Fazer a verificação do tipo de conta, se
 																			// é "poupança"
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Quantos meses você quer projetar?");
-		int meses = scan.nextInt();
+		try (Scanner scan = new Scanner(System.in)) {
+			System.out.println("Quantos meses você quer projetar?");
+			int meses = scan.nextInt();
 
-		for (Conta conta : contas) {
-			if (conta.getNumConta() == (numContaProcurado)) {
-				System.out.println("Conta encontrada: " + conta);
-				conta.calcularNovoSaldoAposMeses(meses);
-				return "O novo saldo após o rendimento é de: R$ " + conta.getSaldo();
+			for (Conta conta : contas) {
+				if (conta.getNumConta() == (numContaProcurado)) {
+					System.out.println("Conta encontrada: " + conta);
+					ContaPoupanca contaPoupanca = (ContaPoupanca) conta;// Fazendo o casting da variável para classe
+																		// ContaPoupanca, conseguimos acessar o método
+																		// especifico dessa classe
+//				conta.calcularNovoSaldoAposMeses(meses); 
+					contaPoupanca.calcularNovoSaldoAposMeses(meses);
+					return "O novo saldo após o rendimento é de: R$ " + conta.getSaldo();
+				}
 			}
 		}
 		return "Conta não encontrada";
