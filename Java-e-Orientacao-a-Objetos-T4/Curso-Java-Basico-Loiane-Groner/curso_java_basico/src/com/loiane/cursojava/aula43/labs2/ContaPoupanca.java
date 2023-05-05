@@ -1,3 +1,4 @@
+package com.loiane.cursojava.aula43.labs01;
 
 public class ContaPoupanca extends Conta {
 	final private String TIPOCONTA = "Conta Poupança";

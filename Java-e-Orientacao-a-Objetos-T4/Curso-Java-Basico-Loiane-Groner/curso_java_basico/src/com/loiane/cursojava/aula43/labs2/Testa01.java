@@ -1,3 +1,4 @@
+package com.loiane.cursojava.aula43.labs01;
 
 import java.util.Scanner;
 

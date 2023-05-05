@@ -1,4 +1,4 @@
-
+package com.loiane.cursojava.aula43.labs01;
 
 public class ContaEspecial extends Conta {
 	final private String TIPOCONTA = "Conta Especial";
