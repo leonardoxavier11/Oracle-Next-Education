@@ -1,4 +1,4 @@
-package loja_virtual.modulo07.aula02.modelo;
+package loja_virtual.modulo07.aula04.modelo;
 
 public class Produto {
 

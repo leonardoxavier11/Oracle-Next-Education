@@ -1,4 +1,4 @@
-package loja_virtual.modulo07.aula02;
+package loja_virtual.modulo07.aula04;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class TestaRemocao {
 
 		PreparedStatement stm = con.prepareStatement("DELETE FROM PRODUTO WHERE ID > ?");
 
-		stm.setInt(1, 60);
+		stm.setInt(1, 57);
 
 		stm.execute();
 

@@ -1,4 +1,4 @@
-package loja_virtual.modulo07.aula02;
+package loja_virtual.modulo07.aula04;
 
 import java.sql.Connection;
 import java.sql.SQLException;

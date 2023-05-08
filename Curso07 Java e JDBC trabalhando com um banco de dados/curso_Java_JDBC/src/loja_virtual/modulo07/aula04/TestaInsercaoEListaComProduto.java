@@ -1,4 +1,4 @@
-package loja_virtual.modulo07.aula02;
+package loja_virtual.modulo07.aula04;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,9 +11,9 @@ public class TestaInsercaoEListaComProduto {
 
 	public static void main(String[] args) throws SQLException {
 
-		Produto produto = new Produto("janela", "janela de aço");
-		Produto produto2 = new Produto("porta", "porta de madeira");
-		Produto produto3 = new Produto("espelho", "espelho de vidro");
+		Produto produto = new Produto("NOTEBOOK", "SAMSUNG");
+		Produto produto2 = new Produto("GELADEIRA", "AZUL");
+		Produto produto3 = new Produto("COMODA", "VERTICAL");
 
 		try (Connection con = new ConnectionFactory().recuperarConexao()) {
 			ProdutoDAO produtoDao = new ProdutoDAO(con);
