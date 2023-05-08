@@ -1,4 +1,4 @@
-package loja_virtual.modulo06.aula03.dao;
+package loja_virtual.modulo07.aula02.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

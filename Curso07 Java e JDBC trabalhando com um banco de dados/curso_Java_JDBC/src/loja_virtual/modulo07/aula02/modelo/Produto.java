@@ -1,4 +1,4 @@
-package loja_virtual.modulo06.aula05.modelo;
+package loja_virtual.modulo07.aula02.modelo;
 
 public class Produto {
 
@@ -7,7 +7,12 @@ public class Produto {
 	private String descricao;
 
 	public Produto(String nome, String descricao) {
-		super();
+		this.nome = nome;
+		this.descricao = descricao;
+	}
+
+	public Produto(Integer id, String nome, String descricao) {
+		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 	}

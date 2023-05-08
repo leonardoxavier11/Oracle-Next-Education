@@ -1,4 +1,4 @@
-package loja_virtual.modulo06.aula05;
+package loja_virtual.modulo07.aula02;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

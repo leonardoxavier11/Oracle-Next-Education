@@ -7,12 +7,7 @@ public class Produto {
 	private String descricao;
 
 	public Produto(String nome, String descricao) {
-		this.nome = nome;
-		this.descricao = descricao;
-	}
-
-	public Produto(Integer id, String nome, String descricao) {
-		this.id = id;
+		super();
 		this.nome = nome;
 		this.descricao = descricao;
 	}
