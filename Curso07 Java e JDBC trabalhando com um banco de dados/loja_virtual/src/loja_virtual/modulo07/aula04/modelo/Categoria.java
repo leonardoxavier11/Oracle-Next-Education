@@ -22,4 +22,12 @@ public class Categoria {
 		return String.format("%d - %s", this.id, this.nome);
 	}
 
+	public String getNome() {
+		return nome;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
 }

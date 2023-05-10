@@ -6,6 +6,7 @@ import java.util.List;
 
 import loja_virtual.modulo06.aula03.dao.ProdutoDAO;
 import loja_virtual.modulo06.aula03.modelo.Produto;
+import loja_virtual.modulo07.aula04.factory.ConnectionFactory;
 
 public class TestaInsercaoEListaComProduto {
 

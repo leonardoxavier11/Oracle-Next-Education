@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import loja_virtual.modulo07.aula04.factory.ConnectionFactory;
+
 public class TestaRemocao {
 
 	public static void main(String[] args) throws SQLException {
@@ -13,7 +15,7 @@ public class TestaRemocao {
 
 		PreparedStatement stm = con.prepareStatement("DELETE FROM PRODUTO WHERE ID > ?");
 
-		stm.setInt(1, 57);
+		stm.setInt(1, 70);
 
 		stm.execute();
 
