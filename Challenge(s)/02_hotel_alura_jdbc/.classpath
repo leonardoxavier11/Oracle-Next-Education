@@ -6,14 +6,14 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/leona/Documents/GitHub/Oracle-Next-Education/Challenge ONE/challenge-one-alura-hotel-br/JARS/c3p0-0.9.5.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/leona/Documents/GitHub/Oracle-Next-Education/Challenge ONE/challenge-one-alura-hotel-br/JARS/jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/leona/Documents/GitHub/Oracle-Next-Education/Challenge ONE/challenge-one-alura-hotel-br/JARS/mchange-commons-java-0.2.16.jar"/>
 	<classpathentry kind="lib" path="C:/Users/leona/Desktop/jgoodies-common-1.2.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/leona/Desktop/jgoodies-looks-2.4.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/leona/Desktop/junit-4.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/leona/Documents/GitHub/Oracle-Next-Education/Curso07 Java e JDBC trabalhando com um banco de dados/mysql-connector-j-8.0.33.jar"/>
 	<classpathentry kind="lib" path="jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/leona/Desktop/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/leona/Documents/GitHub/Oracle-Next-Education/Curso07 Java e JDBC trabalhando com um banco de dados/mchange-commons-java-0.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/leona/Documents/GitHub/Oracle-Next-Education/Curso07 Java e JDBC trabalhando com um banco de dados/c3p0-0.9.5.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
