@@ -53,7 +53,8 @@ public class PedidoDao {
 				+ "JOIN item.produto produto "// (item.produto) -> produto (isso se chama alias)
 
 				// Separado para melhor entendimento
-				+ "GROUP BY produto.nome, item.quantidade  " + "ORDER BY item.quantidade DESC";
+				+ "GROUP BY produto.nome  " + "ORDER BY item.quantidade DESC";
+//				+ "GROUP BY produto.nome, item.quantidade  " + "ORDER BY item.quantidade DESC";
 
 		return em.createQuery(jpql, RelatorioDeVendasVo.class).getResultList();
 

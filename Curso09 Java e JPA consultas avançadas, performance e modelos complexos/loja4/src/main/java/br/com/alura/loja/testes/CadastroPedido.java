@@ -41,16 +41,16 @@ public class CadastroPedido {
 //
 ////		produtoDao.deletarTodos();
 //
-//		List<RelatorioDeVendasVo> relatorio = pedidoDao.relatorioDeVendas();
-//		relatorio.forEach(vo -> System.out.println(vo));
-////		relatorio.forEach(System.out::println);
+		List<RelatorioDeVendasVo> relatorio = pedidoDao.relatorioDeVendas();
+		relatorio.forEach(vo -> System.out.println(vo));
+//		relatorio.forEach(System.out::println);
 
 //		Pedido consultaPedidoPorId = pedidoDao.buscarPedidoComClientePor(1l);
 //		System.out.println(consultaPedidoPorId.getCliente().getNome());
-
-		ProdutoDao produtoDao = new ProdutoDao(em);
-		produtoDao.buscarPorParametrosComCriteria("geladeira", null, LocalDate.now());
-		produtoDao.buscarPorParametrosComCriteria("geladeira", null, null);
+//
+//		ProdutoDao produtoDao = new ProdutoDao(em);
+//		produtoDao.buscarPorParametrosComCriteria("geladeira", null, LocalDate.now());
+//		produtoDao.buscarPorParametrosComCriteria("geladeira", null, null);
 
 	}
 
