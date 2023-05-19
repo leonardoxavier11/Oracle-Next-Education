@@ -14,6 +14,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
+import javax.persistence.EntityManager;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -29,8 +30,9 @@ import javax.swing.border.LineBorder;
 
 import com.toedter.calendar.JDateChooser;
 
-import controller.ReservaController;
+import dao.ReservaDao;
 import modelo.Reserva;
+import util.JPAUtil;
 
 @SuppressWarnings("serial")
 public class ReservasView extends JFrame {
@@ -154,23 +156,23 @@ public class ReservasView extends JFrame {
 					LocalDate dataEntrada = txtDataE.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 					LocalDate dataSaida = txtDataS.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-					// Criar uma instância da classe Hospede com as datas de entrada e saída
-					Reserva hospede = new Reserva(dataEntrada, dataSaida);
-					hospede.setIdCliente(idUsuario);
+					// Criar uma instância da classe Reserva com as datas de entrada e saída
+					Reserva reserva = new Reserva(dataEntrada, dataSaida, idUsuario);
 
 					// Calcular a diferença de dias e atribuir o valor ao objeto hospede
-					hospede.calcularValorReservaPelosDias();
+					reserva.calcularValorReservaPelosDias();
 
 					// Exibir o valor da reserva no campo "txtValor", acessando o valor calculado
 					DecimalFormat decimalFormat = new DecimalFormat("R$ #,##0.00");
-					String valorFormatado = decimalFormat.format(hospede.getValorTotalReserva());
+					String valorFormatado = decimalFormat.format(reserva.getValorTotalReserva());
 
 					txtValor.setText(valorFormatado); // VERIFICAR -> O Cálculo só dá certo se a txtDataS for
 														// selecionada por ultimo
 
-					// Persistencia dos dados:
-					ReservaController hospedeController = new ReservaController();
-					hospedeController.persistir(hospede);
+					// settar forma de pagamento para o objeto
+					String formaPagamentoSelecionada = txtFormaPagamento.getSelectedItem().toString();
+					reserva.setFormaDePagamento(formaPagamentoSelecionada);
+
 				}
 			}
 		});
@@ -325,18 +327,43 @@ public class ReservasView extends JFrame {
 		separator_1.setBackground(SystemColor.textHighlight);
 		panel.add(separator_1);
 
-		// Persistir a forma de pagamento na reserva
+		// Persistir a forma de pagamento na reserva -> ESTÁ HAVENDO DUPLICAÇÃO DE
+		// CÓDIGO, PRECISA MELHORAR
 		JPanel btnProximo = new JPanel();
 		btnProximo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (ReservasView.txtDataE.getDate() != null && ReservasView.txtDataS.getDate() != null) {
+					// Obter as datas de entrada e saída
+					LocalDate dataEntrada = txtDataE.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+					LocalDate dataSaida = txtDataS.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-//					ReservaController hospedeController = new ReservaController();
-//					hospedeController.persistir(null);
+					// Criar uma instância da classe Reserva com as datas de entrada e saída
+					Reserva reserva = new Reserva(dataEntrada, dataSaida, idUsuario);
 
+					// Calcular a diferença de dias e atribuir o valor ao objeto hospede
+					reserva.calcularValorReservaPelosDias();
+
+					// Exibir o valor da reserva no campo "txtValor", acessando o valor calculado
+					DecimalFormat decimalFormat = new DecimalFormat("R$ #,##0.00");
+					String valorFormatado = decimalFormat.format(reserva.getValorTotalReserva());
+
+					txtValor.setText(valorFormatado); // VERIFICAR -> O Cálculo só dá certo se a txtDataS for
+														// selecionada por ultimo
+
+					// Settar forma de pagamento para o objeto
+					String formaPagamentoSelecionada = txtFormaPagamento.getSelectedItem().toString();
+					reserva.setFormaDePagamento(formaPagamentoSelecionada);
+
+					// Persistencia dos dados:
+					EntityManager em = JPAUtil.getEntityManager();
+					ReservaDao reservaDao = new ReservaDao(em);
+
+					reservaDao.persistir(reserva);
 					RegistroHospede registro = new RegistroHospede();
+					registro.setIdReserva(reserva.getId());
 					registro.setVisible(true);
+
 				} else {
 					JOptionPane.showMessageDialog(null, "Deve preencher todos os campos.");
 				}
