@@ -8,7 +8,9 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.text.DecimalFormat;
 import java.text.Format;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
@@ -29,6 +31,7 @@ import com.toedter.calendar.JDateChooser;
 import dao.HospedeDao;
 import dao.ReservaDao;
 import modelo.Hospede;
+import modelo.Reserva;
 import util.JPAUtil;
 
 @SuppressWarnings("serial")
@@ -192,7 +195,7 @@ public class RegistroHospede extends JFrame {
 		txtDataN.getCalendarButton()
 				.setIcon(new ImageIcon(RegistroHospede.class.getResource("/imagenes/icon-reservas.png")));
 		txtDataN.getCalendarButton().setBackground(SystemColor.textHighlight);
-		txtDataN.setDateFormatString("yyyy-MM-dd");
+		txtDataN.setDateFormatString("dd-MM-yyyy");
 		contentPane.add(txtDataN);
 
 		txtNacionalidade = new JComboBox();
@@ -278,6 +281,7 @@ public class RegistroHospede extends JFrame {
 		lblNumeroReserva.setFont(new Font("Roboto Black", Font.PLAIN, 18));
 		contentPane.add(lblNumeroReserva);
 
+		// Exibir o numero da reserva
 		txtNreserva = new JTextField();
 		txtNreserva.setFont(new Font("Roboto", Font.PLAIN, 16));
 		txtNreserva.setBounds(560, 495, 285, 33);
@@ -327,15 +331,19 @@ public class RegistroHospede extends JFrame {
 		btnsalvar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				EntityManager em = JPAUtil.getEntityManager();
+
 				String nome = txtNome.getText();
 				String sobreNome = txtSobrenome.getText();
 				LocalDate dataNascimento = txtDataN.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				String nacionalidade = txtNacionalidade.getSelectedItem().toString();
 				String telefone = txtTelefone.getText();
 
-				Hospede hospede = new Hospede(nome, sobreNome, dataNascimento, nacionalidade, telefone, IdReserva);
+				// Pegando o objeto reserva através do Id e passando para o objeto Hospede
+				ReservaDao reservaDao = new ReservaDao(em);
+				Reserva reserva = reservaDao.buscarPorId(IdReserva);
+				Hospede hospede = new Hospede(nome, sobreNome, dataNascimento, nacionalidade, telefone, reserva);
 
-				EntityManager em = JPAUtil.getEntityManager();
 				HospedeDao hospedeDao = new HospedeDao(em);
 				hospedeDao.persistir(hospede);
 			}

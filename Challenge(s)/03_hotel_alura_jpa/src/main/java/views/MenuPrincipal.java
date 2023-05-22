@@ -77,8 +77,8 @@ public class MenuPrincipal extends JFrame {
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 
-		JLabel lblCopyR = new JLabel("Desenvolvido por Fulanita de Tal © 2023");
-		lblCopyR.setBounds(315, 11, 301, 19);
+		JLabel lblCopyR = new JLabel("Desenvolvido por Leonardo Xavier da Silveira © 2023");
+		lblCopyR.setBounds(251, 11, 420, 19);
 		lblCopyR.setForeground(new Color(240, 248, 255));
 		lblCopyR.setFont(new Font("Roboto", Font.PLAIN, 16));
 		panel_1.add(lblCopyR);
@@ -151,12 +151,6 @@ public class MenuPrincipal extends JFrame {
 		btnLogin.setBackground(SystemColor.window);
 		panel.add(btnLogin);
 
-		JLabel imageLogin = new JLabel("");
-		imageLogin.setBounds(0, 0, 80, 70);
-		btnLogin.add(imageLogin);
-		imageLogin.setHorizontalAlignment(SwingConstants.CENTER);
-		imageLogin.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/login.png")));
-
 		JLabel lblTitulo = new JLabel("LOGIN");
 		lblTitulo.setBounds(705, 265, 83, 24);
 		lblTitulo.setBackground(SystemColor.window);
@@ -174,8 +168,8 @@ public class MenuPrincipal extends JFrame {
 		lblTitulo_1.setBounds(805, 265, 83, 24);
 		panel.add(lblTitulo_1);
 
-		JPanel btnLogin_1 = new JPanel();
-		btnLogin_1.addMouseListener(new MouseAdapter() {
+		JPanel btnCriar = new JPanel();
+		btnCriar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				CriarUser criar = new CriarUser();
@@ -183,18 +177,23 @@ public class MenuPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnLogin_1.setLayout(null);
-		btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		btnLogin_1.setBackground(SystemColor.window);
-		btnLogin_1.setBounds(805, 300, 83, 70);
-		panel.add(btnLogin_1);
+		btnCriar.setLayout(null);
+		btnCriar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-		JLabel imageLogin_2 = new JLabel("");
-		imageLogin_2.setIcon(new ImageIcon(
-				"C:\\Users\\leona\\Documents\\GitHub\\Oracle-Next-Education\\Challenge ONE\\challenge-one-alura-hotel-br\\src\\imagenes\\339737.png"));
-		imageLogin_2.setHorizontalAlignment(SwingConstants.CENTER);
-		imageLogin_2.setBounds(0, 0, 80, 70);
-		btnLogin_1.add(imageLogin_2);
+		JLabel imageLogin = new JLabel("");
+		imageLogin.setBounds(0, 0, 80, 70);
+		btnLogin.add(imageLogin);
+		imageLogin.setHorizontalAlignment(SwingConstants.CENTER);
+		imageLogin.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/login.png")));
+		btnCriar.setBackground(SystemColor.window);
+		btnCriar.setBounds(815, 300, 83, 70);
+		panel.add(btnCriar);
+
+		JLabel imageCriar = new JLabel("");
+		imageCriar.setBounds(0, 0, 80, 70);
+		btnCriar.add(imageCriar);
+		imageCriar.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/imagenes/339737.png")));
+		imageCriar.setHorizontalAlignment(SwingConstants.CENTER);
 
 	}
 

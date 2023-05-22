@@ -30,16 +30,6 @@ public class MenuUsuario extends JFrame {
 	private JLabel labelExit;
 	private JLabel labelRegistro;
 
-	private Long idUsuario;
-
-	public Long getId() {
-		return idUsuario;
-	}
-
-	public void setId(Long id) {
-		this.idUsuario = id;
-	}
-
 	/**
 	 * Launch the application.
 	 */
@@ -146,8 +136,7 @@ public class MenuUsuario extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ReservasView reservas = new ReservasView();
-				reservas.setId(idUsuario);
-				
+
 				reservas.setVisible(true);
 				dispose();
 			}

@@ -146,7 +146,7 @@ public class CriarUser extends JFrame {
 		JLabel labelTitulo = new JLabel("CRIAR USUÁRIO");
 		labelTitulo.setForeground(SystemColor.textHighlight);
 		labelTitulo.setFont(new Font("Roboto Black", Font.PLAIN, 26));
-		labelTitulo.setBounds(196, 150, 89, 26);
+		labelTitulo.setBounds(124, 150, 233, 26);
 		panel.add(labelTitulo);
 
 		JSeparator separator_1 = new JSeparator();

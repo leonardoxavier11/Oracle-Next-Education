@@ -16,9 +16,9 @@ public class User {
 	private String usuario;
 	private String senha;
 	
-	public void criarReserva() {
-	    Reserva reserva = new Reserva(this.id);
-	}
+//	public void criarReserva() {
+//	    Reserva reserva = new Reserva(this.id);
+//	}
 
 	public User() { // Hibernate requer um construtor padrão
 	}

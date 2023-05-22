@@ -46,16 +46,6 @@ public class ReservasView extends JFrame {
 	private JLabel labelExit;
 	private JLabel labelAtras;
 
-	private Long idUsuario;
-
-	public Long getId() {
-		return idUsuario;
-	}
-
-	public void setId(Long id) {
-		this.idUsuario = id;
-	}
-
 	/**
 	 * Launch the application.
 	 */
@@ -157,7 +147,7 @@ public class ReservasView extends JFrame {
 					LocalDate dataSaida = txtDataS.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
 					// Criar uma instância da classe Reserva com as datas de entrada e saída
-					Reserva reserva = new Reserva(dataEntrada, dataSaida, idUsuario);
+					Reserva reserva = new Reserva(dataEntrada, dataSaida);
 
 					// Calcular a diferença de dias e atribuir o valor ao objeto hospede
 					reserva.calcularValorReservaPelosDias();
@@ -328,7 +318,7 @@ public class ReservasView extends JFrame {
 		panel.add(separator_1);
 
 		// Persistir a forma de pagamento na reserva -> ESTÁ HAVENDO DUPLICAÇÃO DE
-		// CÓDIGO, PRECISA MELHORAR
+		// CÓDIGO, PRECISA -> PRECISA MELHORAR
 		JPanel btnProximo = new JPanel();
 		btnProximo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -339,7 +329,7 @@ public class ReservasView extends JFrame {
 					LocalDate dataSaida = txtDataS.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
 					// Criar uma instância da classe Reserva com as datas de entrada e saída
-					Reserva reserva = new Reserva(dataEntrada, dataSaida, idUsuario);
+					Reserva reserva = new Reserva(dataEntrada, dataSaida);
 
 					// Calcular a diferença de dias e atribuir o valor ao objeto hospede
 					reserva.calcularValorReservaPelosDias();
@@ -361,7 +351,10 @@ public class ReservasView extends JFrame {
 
 					reservaDao.persistir(reserva);
 					RegistroHospede registro = new RegistroHospede();
+					
 					registro.setIdReserva(reserva.getId());
+					System.out.println(reserva.getId());
+					
 					registro.setVisible(true);
 
 				} else {

@@ -21,22 +21,69 @@ public class Hospede {
 	private LocalDate dataNascimento;
 	private String nascionalidade;
 	private String telefone;
-	private Long idReserva;
 
-//	@OneToOne
-//	private Reserva idReserva;
+	@OneToOne
+	private Reserva reserva;
 
 	public Hospede() {
 	}
 
-	public Hospede(String nome, String sobrenome, LocalDate dataNascimento, String nascionalidade,
-			String telefone, Long idReserva) {
+	public Hospede(String nome, String sobrenome, LocalDate dataNascimento, String nascionalidade, String telefone,
+			Reserva reserva) {
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.dataNascimento = dataNascimento;
 		this.nascionalidade = nascionalidade;
 		this.telefone = telefone;
-		this.idReserva = idReserva;
+		this.reserva = reserva;
+	}
+
+	public Reserva getReserva() {
+		return reserva;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public String getNascionalidade() {
+		return nascionalidade;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public void setNascionalidade(String nascionalidade) {
+		this.nascionalidade = nascionalidade;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 }

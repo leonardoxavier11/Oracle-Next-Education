@@ -263,7 +263,6 @@ public class Login extends JFrame {
 			user.setId(userId);
 
 			MenuUsuario menu = new MenuUsuario();
-			menu.setId(userId);
 
 			menu.setVisible(true);
 			dispose();

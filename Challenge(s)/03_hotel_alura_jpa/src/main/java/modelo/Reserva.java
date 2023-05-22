@@ -23,20 +23,14 @@ public class Reserva {
 	private double valorDiaria = 20;
 	private double valorTotalReserva;
 	private String formaDePagamento;
-	private Long idCliente;
 
 	public Reserva() {// Hibernate requer um construtor padrão
 	}
 
-	public Reserva(LocalDate dataEntrada, LocalDate dataSaida, Long idCliente) {
+	public Reserva(LocalDate dataEntrada, LocalDate dataSaida) {
 		this.dataEntrada = dataEntrada;
 		this.dataSaida = dataSaida;
-		this.idCliente = idCliente;
 		gerarIdReserva();
-	}
-
-	public Reserva(Long id2) {
-		this.idCliente = id2;
 	}
 
 	public void calcularValorReservaPelosDias() {
@@ -66,20 +60,26 @@ public class Reserva {
 		return formaDePagamento;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
-	}
-
 	public void setFormaDePagamento(String formaDePagamento) {
 		this.formaDePagamento = formaDePagamento;
 	}
 
 	public Long getId() {
 		return Id;
+	}
+
+	public void setDataEntrada(LocalDate dataEntrada) {
+		this.dataEntrada = dataEntrada;
+	}
+
+	public void setDataSaida(LocalDate dataSaida) {
+		this.dataSaida = dataSaida;
+	}
+
+	@Override
+	public String toString() {
+		return "Reserva [Id=" + Id + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida
+				+ ", valorTotalReserva=" + valorTotalReserva + ", formaDePagamento=" + formaDePagamento + "]";
 	}
 
 }
