@@ -21,13 +21,19 @@ public class NovaEmpresaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		System.out.println("Cadastrando nova empresa");
+//		System.out.println("Cadastrando nova empresa");
 
 		String nomeEmpresa = request.getParameter("nome"); // Recebendo parametros a partir da url do navegador (após
 															// "?")
+		Empresa empresa = new Empresa();
+		empresa.setNome(nomeEmpresa);
+
+		// Simular um banco de dados
+		Banco banco = new Banco();
+		banco.adiciona(empresa);
 
 		PrintWriter out = response.getWriter();
-		out.println("<html><boby>Cadastrando " + nomeEmpresa + "  com sucesso</boby></html>");
+		out.println("<html><boby>" + nomeEmpresa + "  com sucesso</boby></html>");
 	}
 
 }
