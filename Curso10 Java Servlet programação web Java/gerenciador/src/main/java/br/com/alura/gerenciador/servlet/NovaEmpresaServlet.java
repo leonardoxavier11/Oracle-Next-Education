@@ -1,8 +1,8 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,10 +21,11 @@ public class NovaEmpresaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-//		System.out.println("Cadastrando nova empresa");
+		System.out.println("Cadastrando nova empresa");
 
-		String nomeEmpresa = request.getParameter("nome"); // Recebendo parametros a partir da url do navegador (após
-															// "?")
+// 		Recebendo parametros a partir da url do navegador (após "?" se for Get ouoculto se for POST)
+		String nomeEmpresa = request.getParameter("nome"); // "name=nome" na pag anterior
+
 		Empresa empresa = new Empresa();
 		empresa.setNome(nomeEmpresa);
 
@@ -32,8 +33,15 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 
-		PrintWriter out = response.getWriter();
-		out.println("<html><boby>" + nomeEmpresa + "  com sucesso</boby></html>");
+//		PrintWriter out = response.getWriter();
+//		out.println("<html><body>Empresa " + nomeEmpresa + " cadastrada com sucesso!</body></html>");
+
+		// Chamar o JSP
+		RequestDispatcher rd = request.getRequestDispatcher("/novaEmpresaCriada.jsp");
+		
+		//Repassando o atributo na requesição para o JSP
+		request.setAttribute("empresa", empresa.getNome());
+		rd.forward(request, response);
 	}
 
 }
