@@ -245,6 +245,42 @@ public class Login extends JFrame {
 		header.setBounds(0, 0, 784, 36);
 		panel.add(header);
 		header.setLayout(null);
+
+		JPanel btnBack = new JPanel();
+		btnBack.setLayout(null);
+		btnBack.setBackground(new Color(255, 255, 255));
+		btnBack.setBounds(0, 0, 53, 36);
+		btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		header.add(btnBack);
+		
+		btnBack.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				MenuPrincipal menu = new MenuPrincipal();
+				menu.setVisible(true);
+				dispose();
+			}
+
+//			@Override
+//			public void mouseEntered(MouseEvent e) {
+//				btnBack.setBackground(Color.red);
+//				labelExit.setForeground(Color.white);
+//			}
+//
+//			@Override
+//			public void mouseExited(MouseEvent e) {
+//				btnBack.setBackground(new Color(12, 138, 199));
+//				labelExit.setForeground(Color.white);
+//			}
+		});
+
+		JLabel labelBack = new JLabel("<");
+		labelBack.setBackground(new Color(0, 0, 0));
+		labelBack.setHorizontalAlignment(SwingConstants.CENTER);
+		labelBack.setForeground(new Color(0, 0, 0));
+		labelBack.setFont(new Font("Dialog", Font.PLAIN, 18));
+		labelBack.setBounds(0, 0, 53, 36);
+		btnBack.add(labelBack);
 	}
 
 	private void Login() throws SQLException {
@@ -267,7 +303,7 @@ public class Login extends JFrame {
 			menu.setVisible(true);
 			dispose();
 		} else {
-			JOptionPane.showMessageDialog(this, "Usuario ou Senha não válidos");
+			JOptionPane.showMessageDialog(this, "Usuario ou Senha não válidos, ou Usuario não existe");
 		}
 
 	}

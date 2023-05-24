@@ -20,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
@@ -351,6 +352,7 @@ public class RegistroHospede extends JFrame {
 
 				HospedeDao hospedeDao = new HospedeDao(em);
 				hospedeDao.persistir(hospede);
+				JOptionPane.showMessageDialog(null, "Um hospede foi atrelado a reserva " + reserva.getId()+ ". Continue para cadastrar outro, ou voltar o menu");
 			}
 
 		});
