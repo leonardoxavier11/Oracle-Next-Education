@@ -350,11 +350,13 @@ public class ReservasView extends JFrame {
 					ReservaDao reservaDao = new ReservaDao(em);
 
 					reservaDao.persistir(reserva);
-					RegistroHospede registro = new RegistroHospede();
-					
-					registro.setIdReserva(reserva.getId());
-					System.out.println(reserva.getId());
-					
+
+					JOptionPane.showMessageDialog(contentPane, "Registro salvo, número de reserva: " + reserva.getId());
+
+					//Passando o id da reserva através de um construtor
+					RegistroHospede registro = new RegistroHospede(reserva.getId());
+//					registro.setIdReserva(reserva.getId());
+
 					registro.setVisible(true);
 
 				} else {

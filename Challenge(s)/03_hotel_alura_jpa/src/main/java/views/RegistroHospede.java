@@ -50,10 +50,6 @@ public class RegistroHospede extends JFrame {
 
 	private Long IdReserva;
 
-	public void setIdReserva(Long idReserva) {
-		IdReserva = idReserva;
-	}
-
 	/**
 	 * Launch the application.
 	 */
@@ -61,7 +57,8 @@ public class RegistroHospede extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroHospede frame = new RegistroHospede();
+					RegistroHospede frame = new RegistroHospede(0l); // Foi preciso acrescentar algum parametro Long no
+																		// construtor
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -73,7 +70,9 @@ public class RegistroHospede extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroHospede() {
+
+	public RegistroHospede(Long IdReserva) {
+		this.IdReserva = IdReserva;
 
 		setIconImage(
 				Toolkit.getDefaultToolkit().getImage(RegistroHospede.class.getResource("/imagenes/lOGO-50PX.png")));
@@ -283,11 +282,17 @@ public class RegistroHospede extends JFrame {
 
 		// Exibir o numero da reserva
 		txtNreserva = new JTextField();
-		txtNreserva.setFont(new Font("Roboto", Font.PLAIN, 16));
+		txtNreserva.setFont(new Font("Roboto", Font.BOLD, 18));
 		txtNreserva.setBounds(560, 495, 285, 33);
 		txtNreserva.setColumns(10);
 		txtNreserva.setBackground(Color.WHITE);
 		txtNreserva.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		txtNreserva.setEditable(false); // método que desabilita o modo de edicar no campo "numero da reserva" na view.
+
+		// Convertendo o Long p/ String
+		String id = String.valueOf(this.IdReserva);
+		txtNreserva.setText(id);
+
 		contentPane.add(txtNreserva);
 
 		JSeparator separator_1_2 = new JSeparator();
