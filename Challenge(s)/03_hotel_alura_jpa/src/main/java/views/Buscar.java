@@ -7,7 +7,6 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
 import javax.swing.ImageIcon;
@@ -380,9 +379,12 @@ public class Buscar extends JFrame {
 
 					EntityManager em = JPAUtil.getEntityManager();
 					Reserva reserva = em.find(Reserva.class, reservaId);
+					HospedeDao hospedeDao = new HospedeDao(em);
+					Hospede hospede = hospedeDao.buscarPorIdDaReserva(reservaId);
 
 					try {
 						em.getTransaction().begin();
+						em.remove(hospede);
 						em.remove(reserva); // Deletar a reserva do banco de dados
 						em.getTransaction().commit();
 
@@ -402,6 +404,7 @@ public class Buscar extends JFrame {
 					JOptionPane.showMessageDialog(null, "Nenhuma Reserva Selecionada");
 				}
 			}
+
 		});
 		btnDeletar.setLayout(null);
 		btnDeletar.setBackground(new Color(12, 138, 199));
