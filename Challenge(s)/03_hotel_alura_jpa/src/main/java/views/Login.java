@@ -291,14 +291,19 @@ public class Login extends JFrame {
 		EntityManager em = JPAUtil.getEntityManager();
 		UserDao userDao = new UserDao(em);
 
+		boolean usuarioConfere = false;
+
 		if (userDao.verificarSeJaExiste(Usuario)) {
 			if (userDao.checkPasswordCorrect(Usuario, Senha)) {
 				MenuUsuario menu = new MenuUsuario();
 
+				usuarioConfere = true;
+
 				menu.setVisible(true);
 				dispose();
+			} else {
+				JOptionPane.showMessageDialog(this, "Usuario e senha não conferem");
 			}
-			JOptionPane.showMessageDialog(this, "Usuario e senha não conferem");
 
 		} else {
 			JOptionPane.showMessageDialog(this, "Usuario não existe");
