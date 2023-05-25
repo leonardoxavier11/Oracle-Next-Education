@@ -25,6 +25,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import dao.HospedeDao;
+import dao.ReservaDao;
 import modelo.Hospede;
 import modelo.Reserva;
 import util.JPAUtil;
@@ -331,7 +332,7 @@ public class Buscar extends JFrame {
 
 					HospedeDao hospedeDao = new HospedeDao(em);
 					hospedeDao.editarHospede(hospede);
-					
+
 				} else {
 					JOptionPane.showMessageDialog(null, "Nenhuma Reserva Selecionada");
 				}
@@ -363,27 +364,33 @@ public class Buscar extends JFrame {
 
 					EntityManager em = JPAUtil.getEntityManager();
 					Reserva reserva = em.find(Reserva.class, reservaId);
+					ReservaDao reservaDao = new ReservaDao(em);
+
 					HospedeDao hospedeDao = new HospedeDao(em);
 					Hospede hospede = hospedeDao.buscarPorIdDaReserva(reservaId);
 
-					try {
-						em.getTransaction().begin();
-						em.remove(hospede);
-						em.remove(reserva); // Deletar a reserva do banco de dados
-						em.getTransaction().commit();
+					hospedeDao.deletarHospede(hospede);
+					reservaDao.deletarReserva(reserva);
 
-						// Remover a linha da tabela
-						modelo.removeRow(selectedRow);
+//					try {
+//						em.getTransaction().begin();
+//						em.remove(hospede);
+//						em.remove(reserva); 
+//						em.getTransaction().commit();
+//
+//						// Remover a linha da tabela
+//						modelo.removeRow(selectedRow);
+//
+//						JOptionPane.showMessageDialog(null, "A reserva foi deletada com sucesso.", "Reserva Deletada",
+//								JOptionPane.INFORMATION_MESSAGE);
+//					} catch (Exception ex) {
+//						em.getTransaction().rollback();
+//						JOptionPane.showMessageDialog(null, "Erro ao deletar a reserva: " + ex.getMessage(), "Erro",
+//								JOptionPane.ERROR_MESSAGE);
+//					} finally {
+//						em.close();
+//					}
 
-						JOptionPane.showMessageDialog(null, "A reserva foi deletada com sucesso.", "Reserva Deletada",
-								JOptionPane.INFORMATION_MESSAGE);
-					} catch (Exception ex) {
-						em.getTransaction().rollback();
-						JOptionPane.showMessageDialog(null, "Erro ao deletar a reserva: " + ex.getMessage(), "Erro",
-								JOptionPane.ERROR_MESSAGE);
-					} finally {
-						em.close();
-					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Nenhuma Reserva Selecionada");
 				}

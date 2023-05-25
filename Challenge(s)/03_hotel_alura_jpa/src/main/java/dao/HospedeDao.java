@@ -85,7 +85,7 @@ public class HospedeDao {
 
 		try {
 			em.getTransaction().begin();
-			em.merge(hospede); 
+			em.merge(hospede);
 			em.getTransaction().commit();
 
 			JOptionPane.showMessageDialog(null, "As alterações foram salvas com sucesso.", "Alterações Salvas",
@@ -99,4 +99,21 @@ public class HospedeDao {
 		}
 	}
 
+	public void deletarHospede(Hospede hospede) {
+
+		try {
+			em.getTransaction().begin();
+			em.remove(hospede);
+			em.getTransaction().commit();
+
+			JOptionPane.showMessageDialog(null, "As alterações foram salvas com sucesso.", "Alterações Salvas",
+					JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception ex) {
+			em.getTransaction().rollback();
+			JOptionPane.showMessageDialog(null, "Erro ao salvar as alterações: " + ex.getMessage(), "Erro",
+					JOptionPane.ERROR_MESSAGE);
+		} finally {
+			em.close();
+		}
+	}
 }
