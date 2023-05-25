@@ -284,12 +284,13 @@ public class Buscar extends JFrame {
 
 						modelo.addRow(rowData);
 					} else {
+						System.out.println("Não existe a reserva");
 						JOptionPane.showMessageDialog(null, "Nome do Hospede não existe no Banco de Dados");
 					}
 
 				}
 				JOptionPane.showMessageDialog(null,
-						"Selecione uma reserva para editar ou deletar, e click no botão de ação desejado. Lembre-se de estar com a linha desejada selecionada!");
+						"Selecione uma reserva para editar ou deletar, e click no botão de ação desejado. Lembre-se de estar com a linha do Hospede selecionada!");
 			}
 		});
 		btnbuscar.setLayout(null);
@@ -305,7 +306,7 @@ public class Buscar extends JFrame {
 		lblBuscar.setForeground(Color.WHITE);
 		lblBuscar.setFont(new Font("Roboto", Font.PLAIN, 18));
 
-		// Ajustar os métodos para pegar os tipos LocalDate
+		// Jogar para a Dao - > EDITAR
 		JPanel btnEditar = new JPanel();
 		btnEditar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -329,9 +330,20 @@ public class Buscar extends JFrame {
 //					hospede.getReserva().setDataSaida(((LocalDate) modelo.getValueAt(selectedRow, 2)));//Precisa ajustar esse retorno!!
 					hospede.getReserva().setFormaDePagamento((String) modelo.getValueAt(selectedRow, 4));
 
-					HospedeDao hospedeDao = new HospedeDao(em);
-					hospedeDao.editarHospede(hospede);
-					
+					try {
+						em.getTransaction().begin();
+						em.merge(hospede); // Atualizar a reserva no banco de dados
+						em.getTransaction().commit();
+
+						JOptionPane.showMessageDialog(null, "As alterações foram salvas com sucesso.",
+								"Alterações Salvas", JOptionPane.INFORMATION_MESSAGE);
+					} catch (Exception ex) {
+						em.getTransaction().rollback();
+						JOptionPane.showMessageDialog(null, "Erro ao salvar as alterações: " + ex.getMessage(), "Erro",
+								JOptionPane.ERROR_MESSAGE);
+					} finally {
+						em.close();
+					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Nenhuma Reserva Selecionada");
 				}

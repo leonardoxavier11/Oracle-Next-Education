@@ -305,7 +305,7 @@ public class Buscar extends JFrame {
 		lblBuscar.setForeground(Color.WHITE);
 		lblBuscar.setFont(new Font("Roboto", Font.PLAIN, 18));
 
-		// Ajustar os métodos para pegar os tipos LocalDate
+		// Jogar para a Dao - > EDITAR
 		JPanel btnEditar = new JPanel();
 		btnEditar.addMouseListener(new MouseAdapter() {
 			@Override

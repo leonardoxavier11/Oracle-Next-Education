@@ -85,7 +85,7 @@ public class HospedeDao {
 
 		try {
 			em.getTransaction().begin();
-			em.merge(hospede); 
+			em.merge(hospede); // Atualizar a reserva no banco de dados
 			em.getTransaction().commit();
 
 			JOptionPane.showMessageDialog(null, "As alterações foram salvas com sucesso.", "Alterações Salvas",
