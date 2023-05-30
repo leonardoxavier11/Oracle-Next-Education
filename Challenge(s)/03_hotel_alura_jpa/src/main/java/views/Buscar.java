@@ -25,6 +25,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import dao.HospedeDao;
+import dao.ReservaDao;
 import modelo.Hospede;
 import modelo.Reserva;
 import util.JPAUtil;
@@ -226,9 +227,6 @@ public class Buscar extends JFrame {
 				EntityManager em = JPAUtil.getEntityManager();
 				HospedeDao hospedeDao = new HospedeDao(em);
 
-//				Reserva reserva = new Reserva();
-//				Hospede hospede = new Hospede();
-
 				if (hospedeDao.isNumero(busca)) {
 					Long idBusca = Long.valueOf(busca);
 
@@ -257,7 +255,6 @@ public class Buscar extends JFrame {
 
 						modelo.addRow(rowData);
 					} else {
-						System.out.println("Não existe a reserva");
 						JOptionPane.showMessageDialog(null, "Id da Reserva não existe no Banco de dados");
 					}
 
@@ -288,13 +285,12 @@ public class Buscar extends JFrame {
 
 						modelo.addRow(rowData);
 					} else {
-						System.out.println("Não existe a reserva");
 						JOptionPane.showMessageDialog(null, "Nome do Hospede não existe no Banco de Dados");
 					}
 
 				}
 				JOptionPane.showMessageDialog(null,
-						"Selecione uma reserva para editar ou deletar, e click no botão de ação desejado. Lembre-se de estar com a linha do Hospede selecionada!");
+						"Selecione uma reserva para editar ou deletar, e click no botão de ação desejado. Lembre-se de estar com a linha desejada selecionada!");
 			}
 		});
 		btnbuscar.setLayout(null);
@@ -310,7 +306,7 @@ public class Buscar extends JFrame {
 		lblBuscar.setForeground(Color.WHITE);
 		lblBuscar.setFont(new Font("Roboto", Font.PLAIN, 18));
 
-		// Jogar para a Dao - > EDITAR
+		// Ajustar os métodos para pegar os tipos LocalDate
 		JPanel btnEditar = new JPanel();
 		btnEditar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -334,20 +330,9 @@ public class Buscar extends JFrame {
 //					hospede.getReserva().setDataSaida(((LocalDate) modelo.getValueAt(selectedRow, 2)));//Precisa ajustar esse retorno!!
 					hospede.getReserva().setFormaDePagamento((String) modelo.getValueAt(selectedRow, 4));
 
-					try {
-						em.getTransaction().begin();
-						em.merge(hospede); // Atualizar a reserva no banco de dados
-						em.getTransaction().commit();
+					HospedeDao hospedeDao = new HospedeDao(em);
+					hospedeDao.editarHospede(hospede);
 
-						JOptionPane.showMessageDialog(null, "As alterações foram salvas com sucesso.",
-								"Alterações Salvas", JOptionPane.INFORMATION_MESSAGE);
-					} catch (Exception ex) {
-						em.getTransaction().rollback();
-						JOptionPane.showMessageDialog(null, "Erro ao salvar as alterações: " + ex.getMessage(), "Erro",
-								JOptionPane.ERROR_MESSAGE);
-					} finally {
-						em.close();
-					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Nenhuma Reserva Selecionada");
 				}
@@ -379,27 +364,33 @@ public class Buscar extends JFrame {
 
 					EntityManager em = JPAUtil.getEntityManager();
 					Reserva reserva = em.find(Reserva.class, reservaId);
+					ReservaDao reservaDao = new ReservaDao(em);
+
 					HospedeDao hospedeDao = new HospedeDao(em);
 					Hospede hospede = hospedeDao.buscarPorIdDaReserva(reservaId);
 
-					try {
-						em.getTransaction().begin();
-						em.remove(hospede);
-						em.remove(reserva); // Deletar a reserva do banco de dados
-						em.getTransaction().commit();
+					hospedeDao.deletarHospede(hospede);
+					reservaDao.deletarReserva(reserva);
 
-						// Remover a linha da tabela
-						modelo.removeRow(selectedRow);
+//					try {
+//						em.getTransaction().begin();
+//						em.remove(hospede);
+//						em.remove(reserva); 
+//						em.getTransaction().commit();
+//
+//						// Remover a linha da tabela
+//						modelo.removeRow(selectedRow);
+//
+//						JOptionPane.showMessageDialog(null, "A reserva foi deletada com sucesso.", "Reserva Deletada",
+//								JOptionPane.INFORMATION_MESSAGE);
+//					} catch (Exception ex) {
+//						em.getTransaction().rollback();
+//						JOptionPane.showMessageDialog(null, "Erro ao deletar a reserva: " + ex.getMessage(), "Erro",
+//								JOptionPane.ERROR_MESSAGE);
+//					} finally {
+//						em.close();
+//					}
 
-						JOptionPane.showMessageDialog(null, "A reserva foi deletada com sucesso.", "Reserva Deletada",
-								JOptionPane.INFORMATION_MESSAGE);
-					} catch (Exception ex) {
-						em.getTransaction().rollback();
-						JOptionPane.showMessageDialog(null, "Erro ao deletar a reserva: " + ex.getMessage(), "Erro",
-								JOptionPane.ERROR_MESSAGE);
-					} finally {
-						em.close();
-					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Nenhuma Reserva Selecionada");
 				}

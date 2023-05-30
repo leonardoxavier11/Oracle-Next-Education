@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 
 import modelo.Hospede;
 import modelo.Reserva;
@@ -44,4 +45,21 @@ public class ReservaDao {
 		return em.find(Reserva.class, id);
 	}
 
+	public void deletarReserva(Reserva reserva) {
+
+		try {
+			em.getTransaction().begin();
+			em.remove(reserva);
+			em.getTransaction().commit();
+
+			JOptionPane.showMessageDialog(null, "As alterações foram salvas com sucesso.", "Alterações Salvas",
+					JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception ex) {
+			em.getTransaction().rollback();
+			JOptionPane.showMessageDialog(null, "Erro ao salvar as alterações: " + ex.getMessage(), "Erro",
+					JOptionPane.ERROR_MESSAGE);
+		} finally {
+			em.close();
+		}
+	}
 }

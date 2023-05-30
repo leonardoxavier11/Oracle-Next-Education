@@ -1,27 +1,2 @@
 INDEX VERSION 1.132+C:\Users\leona\Documents\GitHub\Oracle-Next-Education\.metadata\.plugins\org.eclipse.jdt.core
-2887631762.index
-549463165.index
-2244806191.index
-1434881573.index
-1343766154.index
-3593335404.index
-2812309306.index
-3913253555.index
 1865797976.index
-874670611.index
-2431664247.index
-901695328.index
-1086018550.index
-358334328.index
-3413725848.index
-4243470321.index
-527509097.index
-2788130747.index
-2986475236.index
-1801649154.index
-1849398129.index
-1862453424.index
-2544170349.index
-279622201.index
-450468122.index
-563418497.index

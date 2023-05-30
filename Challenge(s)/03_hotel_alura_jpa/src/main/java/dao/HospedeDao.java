@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import javax.swing.JOptionPane;
 
 import modelo.Hospede;
 
@@ -46,12 +47,13 @@ public class HospedeDao {
 	}
 
 	public boolean verificarExistenciaIdReserva(Long reserva_id) {
-		TypedQuery<Long> query = em.createQuery("SELECT COUNT(h.reserva.id) FROM Hospede h WHERE h.reserva.id = :id", Long.class);
+		TypedQuery<Long> query = em.createQuery("SELECT COUNT(h.reserva.id) FROM Hospede h WHERE h.reserva.id = :id",
+				Long.class);
 		query.setParameter("id", reserva_id);
 		Long count = query.getSingleResult();
 		return count > 0;
 	}
-	
+
 	public boolean verificarExistenciaNome(String nome) {
 		TypedQuery<Long> query = em.createQuery("SELECT COUNT(h.nome) FROM Hospede h WHERE h.nome = :nome", Long.class);
 		query.setParameter("nome", nome);
@@ -79,4 +81,39 @@ public class HospedeDao {
 		}
 	}
 
+	public void editarHospede(Hospede hospede) {
+
+		try {
+			em.getTransaction().begin();
+			em.merge(hospede);
+			em.getTransaction().commit();
+
+			JOptionPane.showMessageDialog(null, "As alterações foram salvas com sucesso.", "Alterações Salvas",
+					JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception ex) {
+			em.getTransaction().rollback();
+			JOptionPane.showMessageDialog(null, "Erro ao salvar as alterações: " + ex.getMessage(), "Erro",
+					JOptionPane.ERROR_MESSAGE);
+		} finally {
+			em.close();
+		}
+	}
+
+	public void deletarHospede(Hospede hospede) {
+
+		try {
+			em.getTransaction().begin();
+			em.remove(hospede);
+			em.getTransaction().commit();
+
+			JOptionPane.showMessageDialog(null, "As alterações foram salvas com sucesso.", "Alterações Salvas",
+					JOptionPane.INFORMATION_MESSAGE);
+		} catch (Exception ex) {
+			em.getTransaction().rollback();
+			JOptionPane.showMessageDialog(null, "Erro ao salvar as alterações: " + ex.getMessage(), "Erro",
+					JOptionPane.ERROR_MESSAGE);
+		} finally {
+			em.close();
+		}
+	}
 }

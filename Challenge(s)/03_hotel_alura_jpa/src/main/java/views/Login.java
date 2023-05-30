@@ -252,7 +252,7 @@ public class Login extends JFrame {
 		btnBack.setBounds(0, 0, 53, 36);
 		btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		header.add(btnBack);
-		
+
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -291,19 +291,22 @@ public class Login extends JFrame {
 		EntityManager em = JPAUtil.getEntityManager();
 		UserDao userDao = new UserDao(em);
 
+		boolean usuarioConfere = false;
+
 		if (userDao.verificarSeJaExiste(Usuario)) {
-			if (userDao.checkPasswordCorrect(Usuario, Senha))
-				;
-			User user = new User(Usuario, Senha);
-			Long userId = userDao.retornarId(Usuario);
-			user.setId(userId);
+			if (userDao.checkPasswordCorrect(Usuario, Senha)) {
+				MenuUsuario menu = new MenuUsuario();
 
-			MenuUsuario menu = new MenuUsuario();
+				usuarioConfere = true;
 
-			menu.setVisible(true);
-			dispose();
+				menu.setVisible(true);
+				dispose();
+			} else {
+				JOptionPane.showMessageDialog(this, "Usuario e senha não conferem");
+			}
+
 		} else {
-			JOptionPane.showMessageDialog(this, "Usuario ou Senha não válidos, ou Usuario não existe");
+			JOptionPane.showMessageDialog(this, "Usuario não existe");
 		}
 
 	}
