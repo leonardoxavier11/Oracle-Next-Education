@@ -1,11 +1,11 @@
 package med.voll.api.controller;
 
 import jakarta.validation.Valid;
-import med.voll.api.medico.DadosCadastroMedico;
-import med.voll.api.medico.DadosListagemMedico;
-import med.voll.api.medico.Medico;
-import med.voll.api.medico.MedicoRepository;
-import med.voll.api.medico.DadosAtualizacaoMedico;
+import med.voll.api.dtos.medicos.DadosCadastroMedico;
+import med.voll.api.dtos.medicos.DadosListagemMedico;
+import med.voll.api.models.medico.Medico;
+import med.voll.api.repositories.MedicoRepository;
+import med.voll.api.dtos.medicos.DadosAtualizacaoMedico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,17 +21,17 @@ public class MedicoController {
     private MedicoRepository repository;
 
     @PostMapping
-    @Transactional // Para métodos que precisam de uma transação ativa, como salvar/modificar
+    @Transactional // -> Para métodos que precisam de uma transação ativa, como salvar/modificar
     public void cadastrar(@RequestBody DadosCadastroMedico dados) {
-//        System.out.println(dados);
         repository.save(new Medico(dados));
     }
 
-    @GetMapping
+//    @GetMapping
 //    public List<DadosListagemMedico> listar(Pageable paginacao) {
 //        return  repository.findAll(paginacao).stream().map(DadosListagemMedico::new).toList();
 //    }
 
+    @GetMapping
     //Por padrão o size = 20 e sem ordenação (sort)
     public Page<DadosListagemMedico> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
