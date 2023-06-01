@@ -25,6 +25,7 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
     private Boolean ativo = true;
+    private Boolean realizouConsultaHoje = false;
 
     public Paciente(DadosCadastroPaciente dados) {
         this.nome = dados.nome();

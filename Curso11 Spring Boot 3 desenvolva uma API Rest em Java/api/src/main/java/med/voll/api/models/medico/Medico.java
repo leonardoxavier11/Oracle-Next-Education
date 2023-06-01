@@ -1,16 +1,14 @@
 package med.voll.api.models.medico;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import med.voll.api.dtos.medicos.DadosAtualizacaoMedico;
 import med.voll.api.dtos.medicos.DadosCadastroMedico;
 import med.voll.api.models.endereco.Endereco;
 
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -29,6 +27,7 @@ public class Medico {
     @Embedded
     private Endereco endereco;
     private Boolean ativo = true;
+    private Boolean estaEmConsulta = false;
 
     public Medico(DadosCadastroMedico dados) {
         this.nome = dados.nome();
