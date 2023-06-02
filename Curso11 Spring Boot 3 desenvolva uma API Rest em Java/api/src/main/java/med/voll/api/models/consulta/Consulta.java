@@ -51,20 +51,33 @@ public class Consulta {
     }
 
     public Boolean marcar(Medico medico, Paciente paciente) {
-        //Verificação dos dados
-        System.out.println("Data e hora de início: " + this.dataInicio + " " + this.horaInicio);
-        System.out.println("Dia da semana: " + this.dataInicio.getDayOfWeek());
 
         if (paciente.getAtivo() && medico.getAtivo()) {
             //Paciente e Medico estão ativos no sistema?
+            System.out.println("Paciente e Médico estão ativos no sistema");
             if (this.dataInicio.getDayOfWeek() != DayOfWeek.SUNDAY) {
                 //Dia da Consulta é diferente de domingo?
-                if (this.horaInicio.isAfter(inicio) && this.horaInicio.isBefore(fim)) {
-                    // Horário da Consulta está dentro do intervalo de horário permitido ?
-                    this.horaFim = this.horaInicio.plusHours(1);
-                    this.dataFim = this.dataInicio;
-                    //Atualizada a horaFim, cada consulta tem 1 hora fixa de duração e dataFim
-                    return true;
+                System.out.println("Dia da consulta é diferente de Domingo");
+                if (!paciente.getRealizouConsultaHoje()) {
+                    //O paciente já realizou alguma consulta hoje?
+                    System.out.println("O paciente não fez outra consulta hoje");
+                    if (!medico.temConsultaMarcada(this.dataInicio, this.horaInicio)) {
+                        //O médico não tem outra consulta nesse dia/hora?
+                        System.out.println("O médico não tem outra consulta nesse dia/hora");
+                        if (this.horaInicio.isAfter(inicio) && this.horaInicio.isBefore(fim)) {
+                            // Horário da Consulta está dentro do intervalo de horário permitido ?
+                            this.horaFim = this.horaInicio.plusHours(1);
+                            this.dataFim = this.dataInicio;
+                            this.paciente.setRealizouConsultaHoje(true);
+                            //Atualizada a dataFim e a horaFim, cada consulta tem 1 hora fixa de duração
+                            //Atualizada também a informação se o paciente já realizou alguma consulta hoje
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
                 } else {
                     return false;
                 }
@@ -75,6 +88,7 @@ public class Consulta {
             return false;
         }
     }
+
 
 //    public void realizarConsulta(Medico medico, Paciente paciente) {
 //        //Fazer verificações
