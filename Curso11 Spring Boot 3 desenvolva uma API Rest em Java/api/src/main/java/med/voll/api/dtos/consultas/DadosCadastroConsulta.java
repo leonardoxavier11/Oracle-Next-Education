@@ -8,6 +8,8 @@ import med.voll.api.models.paciente.Paciente;
 
 import java.time.LocalDateTime;
 
-public record DadosCadastroConsulta(@NotNull Long medicoId, @NotNull Long pacienteId, @NotNull LocalDateTime dataHora) {
+public record DadosCadastroConsulta(Long medicoId, @NotNull Long pacienteId, @NotNull LocalDateTime dataHora) {
 
 }
+
+
