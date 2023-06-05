@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("consulta")
+@RequestMapping("consultas")
 public class ConsultaController {
 
     //Se faz necessário injetar os demais Reposities, pois há uma relação ManyToOne, partindo de Consulta
